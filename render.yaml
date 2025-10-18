@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: attireum-backend
+    env: python
+    buildCommand: pip install -r requirements-simple.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+      - key: ENVIRONMENT
+        value: production
+      - key: BRIEFING_ENABLED
+        value: false
+
