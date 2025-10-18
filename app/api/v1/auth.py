@@ -7,6 +7,7 @@ from pydantic import BaseModel
 from typing import Optional
 from datetime import datetime, timedelta
 import os
+import secrets
 
 router = APIRouter()
 
@@ -19,8 +20,8 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 24 hours
 class SignUpRequest(BaseModel):
     email: str
     password: str
-    firstName: str
-    lastName: str
+    first_name: str
+    last_name: str
 
 
 class LoginRequest(BaseModel):
@@ -36,40 +37,35 @@ class AuthResponse(BaseModel):
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     # Simple token generation without JWT for now
-    import secrets
     return f"token_{secrets.token_urlsafe(32)}"
 
 
 @router.post("/signup", response_model=AuthResponse)
 async def signup(request: SignUpRequest):
     """Sign up a new user"""
-    # For now, create a mock user (you'll replace this with real database logic)
     user_data = {
-        "id": f"user_{datetime.utcnow().timestamp()}",
+        "user_id": f"user_{int(datetime.utcnow().timestamp())}",
         "email": request.email,
-        "firstName": request.firstName,
-        "lastName": request.lastName,
+        "first_name": request.first_name,
+        "last_name": request.last_name,
         "sizes": {},
-        "preferredBrands": [],
-        "preferredOccasions": [],
+        "preferred_brands": [],
+        "preferred_occasions": [],
         "currency": "USD",
         "region": "US",
         "timezone": "America/New_York",
-        "notificationPreferences": {
-            "dailyBriefing": True,
-            "priceAlerts": True,
-            "newArrivals": True
+        "notification_preferences": {
+            "daily_briefing": True,
+            "price_alerts": True,
+            "new_arrivals": True
         },
-        "createdAt": datetime.utcnow().isoformat(),
-        "updatedAt": datetime.utcnow().isoformat()
+        "created_at": datetime.utcnow().isoformat(),
+        "updated_at": datetime.utcnow().isoformat()
     }
     
     # Create tokens
-    access_token = create_access_token(data={"sub": user_data["email"], "user_id": user_data["id"]})
-    refresh_token = create_access_token(
-        data={"sub": user_data["email"], "user_id": user_data["id"]},
-        expires_delta=timedelta(days=30)
-    )
+    access_token = create_access_token(data={"sub": user_data["email"], "user_id": user_data["user_id"]})
+    refresh_token = create_access_token(data={"sub": user_data["email"], "user_id": user_data["user_id"]}, expires_delta=timedelta(days=30))
     
     return AuthResponse(
         accessToken=access_token,
@@ -81,33 +77,29 @@ async def signup(request: SignUpRequest):
 @router.post("/login", response_model=AuthResponse)
 async def login(request: LoginRequest):
     """Login an existing user"""
-    # For now, accept any login (you'll replace this with real authentication)
     user_data = {
-        "id": "user_123",
+        "user_id": "user_123",
         "email": request.email,
-        "firstName": "Luxury",
-        "lastName": "Shopper",
+        "first_name": "Luxury",
+        "last_name": "Shopper",
         "sizes": {},
-        "preferredBrands": ["Gucci", "Prada", "Chanel"],
-        "preferredOccasions": ["Evening", "Formal"],
+        "preferred_brands": ["Gucci", "Prada", "Chanel"],
+        "preferred_occasions": ["Evening", "Formal"],
         "currency": "USD",
         "region": "US",
         "timezone": "America/New_York",
-        "notificationPreferences": {
-            "dailyBriefing": True,
-            "priceAlerts": True,
-            "newArrivals": True
+        "notification_preferences": {
+            "daily_briefing": True,
+            "price_alerts": True,
+            "new_arrivals": True
         },
-        "createdAt": datetime.utcnow().isoformat(),
-        "updatedAt": datetime.utcnow().isoformat()
+        "created_at": datetime.utcnow().isoformat(),
+        "updated_at": datetime.utcnow().isoformat()
     }
     
     # Create tokens
-    access_token = create_access_token(data={"sub": user_data["email"], "user_id": user_data["id"]})
-    refresh_token = create_access_token(
-        data={"sub": user_data["email"], "user_id": user_data["id"]},
-        expires_delta=timedelta(days=30)
-    )
+    access_token = create_access_token(data={"sub": user_data["email"], "user_id": user_data["user_id"]})
+    refresh_token = create_access_token(data={"sub": user_data["email"], "user_id": user_data["user_id"]}, expires_delta=timedelta(days=30))
     
     return AuthResponse(
         accessToken=access_token,
@@ -125,6 +117,4 @@ async def logout():
 @router.post("/refresh-token")
 async def refresh_token():
     """Refresh access token"""
-    # Implement token refresh logic
     return {"accessToken": "new_token", "refreshToken": "new_refresh_token"}
-
