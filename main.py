@@ -13,7 +13,7 @@ import os
 # Load environment variables (dotenv removed for simplicity)
 
 # Import routers
-from app.api.v1 import auth, search, products, wishlist, briefing, profile
+from app.api.v1 import auth, search, products, wishlist, briefing, profile, styling
 
 # Import database
 from app.database import engine, init_db
@@ -115,6 +115,7 @@ app.include_router(products.router, prefix="/products", tags=["Products"])
 app.include_router(wishlist.router, prefix="/wishlist", tags=["Wishlist"])
 app.include_router(briefing.router, prefix="/briefing", tags=["Briefing"])
 app.include_router(profile.router, prefix="/profile", tags=["Profile"])
+app.include_router(styling.router, prefix="/styling", tags=["Virtual Stylist"])
 
 
 if __name__ == "__main__":
