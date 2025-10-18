@@ -48,19 +48,28 @@ async def signup(request: SignUpRequest):
         "email": request.email,
         "first_name": request.first_name,
         "last_name": request.last_name,
-        "sizes": {},
+        "sizes": {
+            "international": [],
+            "us": [],
+            "eu": []
+        },
         "preferred_brands": [],
         "preferred_occasions": [],
         "currency": "USD",
         "region": "US",
         "timezone": "America/New_York",
         "notification_preferences": {
-            "daily_briefing": True,
+            "briefing_enabled": True,
+            "briefing_time": "08:00",
+            "briefing_frequency": "daily",
             "price_alerts": True,
-            "new_arrivals": True
+            "new_arrivals": True,
+            "sales_alerts": True,
+            "quiet_hours_start": None,
+            "quiet_hours_end": None
         },
-        "created_at": datetime.utcnow().isoformat(),
-        "updated_at": datetime.utcnow().isoformat()
+        "created_at": datetime.utcnow().isoformat() + "Z",
+        "updated_at": datetime.utcnow().isoformat() + "Z"
     }
     
     # Create tokens
@@ -82,19 +91,28 @@ async def login(request: LoginRequest):
         "email": request.email,
         "first_name": "Luxury",
         "last_name": "Shopper",
-        "sizes": {},
+        "sizes": {
+            "international": [],
+            "us": [],
+            "eu": []
+        },
         "preferred_brands": ["Gucci", "Prada", "Chanel"],
         "preferred_occasions": ["Evening", "Formal"],
         "currency": "USD",
         "region": "US",
         "timezone": "America/New_York",
         "notification_preferences": {
-            "daily_briefing": True,
+            "briefing_enabled": True,
+            "briefing_time": "08:00",
+            "briefing_frequency": "daily",
             "price_alerts": True,
-            "new_arrivals": True
+            "new_arrivals": True,
+            "sales_alerts": True,
+            "quiet_hours_start": None,
+            "quiet_hours_end": None
         },
-        "created_at": datetime.utcnow().isoformat(),
-        "updated_at": datetime.utcnow().isoformat()
+        "created_at": datetime.utcnow().isoformat() + "Z",
+        "updated_at": datetime.utcnow().isoformat() + "Z"
     }
     
     # Create tokens
@@ -117,4 +135,4 @@ async def logout():
 @router.post("/refresh-token")
 async def refresh_token():
     """Refresh access token"""
-    return {"accessToken": "new_token", "refreshToken": "new_refresh_token"}
+    return {"access_token": "new_token", "refresh_token": "new_refresh_token"}
