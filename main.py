@@ -8,11 +8,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from contextlib import asynccontextmanager
 import logging
-from dotenv import load_dotenv
 import os
 
-# Load environment variables
-load_dotenv()
+# Load environment variables (dotenv removed for simplicity)
 
 # Import routers
 from app.api.v1 import auth, search, products, wishlist, briefing, profile
