@@ -2,10 +2,9 @@
 Authentication API Endpoints
 """
 
-from fastapi import APIRouter, HTTPException, Depends
-from pydantic import BaseModel, EmailStr
+from fastapi import APIRouter
+from pydantic import BaseModel
 from typing import Optional
-import jwt
 from datetime import datetime, timedelta
 import os
 
@@ -18,14 +17,14 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 24 hours
 
 
 class SignUpRequest(BaseModel):
-    email: EmailStr
+    email: str
     password: str
     firstName: str
     lastName: str
 
 
 class LoginRequest(BaseModel):
-    email: EmailStr
+    email: str
     password: str
 
 
@@ -36,14 +35,9 @@ class AuthResponse(BaseModel):
 
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
-    to_encode = data.copy()
-    if expires_delta:
-        expire = datetime.utcnow() + expires_delta
-    else:
-        expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    to_encode.update({"exp": expire})
-    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-    return encoded_jwt
+    # Simple token generation without JWT for now
+    import secrets
+    return f"token_{secrets.token_urlsafe(32)}"
 
 
 @router.post("/signup", response_model=AuthResponse)
