@@ -30,8 +30,8 @@ class LoginRequest(BaseModel):
 
 
 class AuthResponse(BaseModel):
-    accessToken: str
-    refreshToken: str
+    access_token: str
+    refresh_token: str
     user: dict
 
 
@@ -68,8 +68,8 @@ async def signup(request: SignUpRequest):
     refresh_token = create_access_token(data={"sub": user_data["email"], "user_id": user_data["user_id"]}, expires_delta=timedelta(days=30))
     
     return AuthResponse(
-        accessToken=access_token,
-        refreshToken=refresh_token,
+        access_token=access_token,
+        refresh_token=refresh_token,
         user=user_data
     )
 
@@ -102,8 +102,8 @@ async def login(request: LoginRequest):
     refresh_token = create_access_token(data={"sub": user_data["email"], "user_id": user_data["user_id"]}, expires_delta=timedelta(days=30))
     
     return AuthResponse(
-        accessToken=access_token,
-        refreshToken=refresh_token,
+        access_token=access_token,
+        refresh_token=refresh_token,
         user=user_data
     )
 
