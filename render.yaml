@@ -2,7 +2,7 @@ services:
   - type: web
     name: attireum-backend
     env: python
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install --no-cache-dir -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: PYTHON_VERSION
@@ -11,4 +11,8 @@ services:
         value: production
       - key: BRIEFING_ENABLED
         value: false
+      - key: CARGO_HOME
+        value: /tmp/cargo
+      - key: CARGO_TARGET_DIR
+        value: /tmp/target
 
