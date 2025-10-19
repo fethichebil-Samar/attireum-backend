@@ -44,23 +44,25 @@ async def get_latest_briefing():
     """
     Get today's latest briefing for the user
     """
-    # Mock briefing data
+    # Mock briefing data with correct field names
     mock_product = {
         "product_id": str(uuid.uuid4()),
+        "retailer_id": "ret_1",
+        "retailer_name": "Farfetch",
         "name": "Silk Evening Gown",
         "brand": "Valentino",
+        "category": "Dresses",
         "price": 2800.00,
         "original_price": 3500.00,
         "discount_percentage": 20.0,
         "size_availability": ["S", "M", "L"],
-        "image_url": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&h=1200&fit=crop&q=80",
+        "image_urls": ["https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&h=1200&fit=crop&q=80"],  # Array, not singular
         "product_url": "https://farfetch.com/valentino-gown",
         "description": "Elegant silk gown perfect for evening events",
         "material": "100% Silk",
         "in_stock": True,
         "rating": 4.8,
-        "retailer_name": "Farfetch",
-        "scraped_at": datetime.utcnow().isoformat()
+        "scraped_at": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")  # ISO8601 format
     }
     
     mock_price_drop = {
