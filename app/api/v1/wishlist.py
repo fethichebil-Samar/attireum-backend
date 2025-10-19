@@ -10,6 +10,7 @@ import time
 router = APIRouter()
 
 # In-memory wishlist storage (replace with database in production)
+# Clear any corrupt data
 wishlist_storage = []
 
 
