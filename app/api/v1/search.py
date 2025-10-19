@@ -6,7 +6,16 @@ from fastapi import APIRouter
 from pydantic import BaseModel
 from typing import List, Optional
 import time
-from app.scrapers.asos_scraper import search_asos_products
+
+# Try importing scraper and log result
+try:
+    from app.scrapers.asos_scraper import search_asos_products
+    print("✅ Successfully imported asos_scraper")
+    SCRAPER_AVAILABLE = True
+except ImportError as e:
+    print(f"❌ Failed to import asos_scraper: {e}")
+    SCRAPER_AVAILABLE = False
+    search_asos_products = None
 
 router = APIRouter()
 
@@ -120,7 +129,13 @@ async def search_products(search_request: SearchRequest):
     search_term = query.product_type.lower()
     
     # Search ASOS with real data
+    if not SCRAPER_AVAILABLE:
+        print("⚠️  Scraper not available, using mock data")
+    
     try:
+        if not SCRAPER_AVAILABLE:
+            raise ImportError("Scraper module not available")
+            
         real_products = search_asos_products(
             query=search_term,
             gender="women",  # Default to women, could be dynamic based on occasion
@@ -152,6 +167,9 @@ async def search_products(search_request: SearchRequest):
     
     except Exception as e:
         print(f"❌ ASOS scraper error: {e}")
+        print(f"❌ Error type: {type(e).__name__}")
+        import traceback
+        print(f"❌ Full traceback: {traceback.format_exc()}")
         # Fall back to mock data if scraper fails
     
     # Fallback to mock data if scraper fails or returns no results
