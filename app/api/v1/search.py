@@ -45,12 +45,72 @@ class SearchResponse(BaseModel):
     search_id: str
 
 
+def get_product_images(product_type: str):
+    """Get relevant Unsplash images based on product type"""
+    
+    # Map product types to relevant Unsplash search terms
+    image_map = {
+        "Dresses": [
+            "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&h=1200&fit=crop&q=80",  # Evening dress
+            "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=800&h=1200&fit=crop&q=80",  # Red dress
+            "https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=800&h=1200&fit=crop&q=80"   # Black dress
+        ],
+        "Jackets & Coats": [
+            "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800&h=1200&fit=crop&q=80",  # Leather jacket
+            "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=800&h=1200&fit=crop&q=80",  # Designer coat
+            "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=800&h=1200&fit=crop&q=80"   # Fashion coat
+        ],
+        "Bags": [
+            "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&h=1200&fit=crop&q=80",  # Luxury bag
+            "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800&h=1200&fit=crop&q=80",  # Designer bag
+            "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=800&h=1200&fit=crop&q=80"   # Handbag
+        ],
+        "Shoes": [
+            "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&h=1200&fit=crop&q=80",  # Luxury heels
+            "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&h=1200&fit=crop&q=80",  # Designer shoes
+            "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=800&h=1200&fit=crop&q=80"   # High heels
+        ],
+        "Pants": [
+            "https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=800&h=1200&fit=crop&q=80",  # Designer pants
+            "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=800&h=1200&fit=crop&q=80",  # Fashion pants
+            "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=800&h=1200&fit=crop&q=80"   # Luxury trousers
+        ],
+        "Shirts & Blouses": [
+            "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=800&h=1200&fit=crop&q=80",  # White shirt
+            "https://images.unsplash.com/photo-1578932750355-5eb30ece487a?w=800&h=1200&fit=crop&q=80",  # Designer blouse
+            "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800&h=1200&fit=crop&q=80"   # Fashion top
+        ],
+        "Sweaters & Knitwear": [
+            "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=800&h=1200&fit=crop&q=80",  # Luxury sweater
+            "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&h=1200&fit=crop&q=80",  # Knitwear
+            "https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=800&h=1200&fit=crop&q=80"   # Designer sweater
+        ],
+        "Skirts": [
+            "https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=800&h=1200&fit=crop&q=80",  # Fashion skirt
+            "https://images.unsplash.com/photo-1590736969955-71cc94901144?w=800&h=1200&fit=crop&q=80",  # Designer skirt
+            "https://images.unsplash.com/photo-1623120389902-6c846c80f4f8?w=800&h=1200&fit=crop&q=80"   # Luxury skirt
+        ]
+    }
+    
+    # Default to generic fashion images if product type not found
+    default_images = [
+        "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&h=1200&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&h=1200&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&h=1200&fit=crop&q=80"
+    ]
+    
+    return image_map.get(product_type, default_images)
+
+
 @router.post("", response_model=SearchResponse)
 async def search_products(search_request: SearchRequest):
     """
     Search for luxury products across all retailers (Mock implementation)
     """
     query = search_request.query
+    
+    # Get appropriate images based on product type
+    images = get_product_images(query.product_type)
     
     # Generate mock products based on search
     mock_products = [
@@ -65,10 +125,7 @@ async def search_products(search_request: SearchRequest):
             "original_price": 1500.00,
             "discount_percentage": 20.0,
             "size_availability": [query.size, "S", "M", "L"],
-            "image_urls": [
-                "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&h=1200&fit=crop&q=80",
-                "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&h=1200&fit=crop&q=80"
-            ],
+            "image_urls": [images[0]],  # First image
             "product_url": "https://www.farfetch.com/product/123",
             "description": f"Luxury {query.product_type.lower()} perfect for {query.occasion.lower()} occasions.",
             "material": "100% Silk",
@@ -87,10 +144,7 @@ async def search_products(search_request: SearchRequest):
             "original_price": None,
             "discount_percentage": None,
             "size_availability": [query.size, "XS", "S", "M"],
-            "image_urls": [
-                "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&h=1200&fit=crop&q=80",
-                "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&h=1200&fit=crop&q=80"
-            ],
+            "image_urls": [images[1]],  # Second image
             "product_url": "https://www.net-a-porter.com/product/456",
             "description": f"Exquisite {query.product_type.lower()} crafted with attention to detail.",
             "material": "Premium Leather",
@@ -109,10 +163,7 @@ async def search_products(search_request: SearchRequest):
             "original_price": 3000.00,
             "discount_percentage": 25.0,
             "size_availability": [query.size, "M", "L", "XL"],
-            "image_urls": [
-                "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&h=1200&fit=crop&q=80",
-                "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&h=1200&fit=crop&q=80"
-            ],
+            "image_urls": [images[2]],  # Third image
             "product_url": "https://www.ounass.com/product/789",
             "description": f"Timeless {query.product_type.lower()} from Chanel's latest collection.",
             "material": "Silk & Cashmere Blend",
