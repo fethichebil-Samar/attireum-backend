@@ -25,16 +25,16 @@ class WishlistItem(BaseModel):
 @router.get("/")
 async def get_wishlist():
     """Get user's wishlist with mock products"""
-    # Return mock wishlist items
+    # Return mock wishlist items with correct field names
     mock_wishlist = [
         {
-            "id": "wish_1",
+            "wishlist_id": "wish_1",
             "user_id": "test_user",
             "product": {
-                "id": "prod_wish_1",
+                "product_id": "prod_wish_1",
                 "retailer_id": "ret_1",
                 "retailer_name": "Farfetch",
-                "name": "Dresses - Elegant Valentino Evening Gown",
+                "name": "Elegant Valentino Evening Gown",
                 "brand": "Valentino",
                 "category": "Dresses",
                 "price": 2800.00,
@@ -54,13 +54,13 @@ async def get_wishlist():
             "notified": False
         },
         {
-            "id": "wish_2",
+            "wishlist_id": "wish_2",
             "user_id": "test_user",
             "product": {
-                "id": "prod_wish_2",
+                "product_id": "prod_wish_2",
                 "retailer_id": "ret_2",
                 "retailer_name": "Net-A-Porter",
-                "name": "Bags - Gucci GG Marmont Shoulder Bag",
+                "name": "Gucci GG Marmont Shoulder Bag",
                 "brand": "Gucci",
                 "category": "Bags",
                 "price": 1890.00,
@@ -80,13 +80,13 @@ async def get_wishlist():
             "notified": False
         },
         {
-            "id": "wish_3",
+            "wishlist_id": "wish_3",
             "user_id": "test_user",
             "product": {
-                "id": "prod_wish_3",
+                "product_id": "prod_wish_3",
                 "retailer_id": "ret_3",
                 "retailer_name": "Ounass",
-                "name": "Shoes - Christian Louboutin So Kate Pumps",
+                "name": "Christian Louboutin So Kate Pumps",
                 "brand": "Christian Louboutin",
                 "category": "Shoes",
                 "price": 695.00,
@@ -110,7 +110,11 @@ async def get_wishlist():
     # Combine with in-memory storage
     all_items = wishlist_storage + mock_wishlist
     
-    return all_items
+    # Return in the format iOS app expects
+    return {
+        "items": all_items,
+        "total_count": len(all_items)
+    }
 
 
 @router.post("/")
