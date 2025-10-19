@@ -118,27 +118,54 @@ async def get_wishlist():
     }
 
 
+class AddToWishlistRequest(BaseModel):
+    product_id: str
+    price_alert_threshold: Optional[float] = None
+
+
 @router.post("/")
-async def add_to_wishlist(product: dict = Body(...)):
+async def add_to_wishlist(request: AddToWishlistRequest):
     """Add product to wishlist"""
-    # Create wishlist item
+    
+    # For now, create a mock product based on the product_id
+    # In production, you'd fetch the actual product from database
+    mock_product = {
+        "product_id": request.product_id,
+        "retailer_id": "ret_1",
+        "retailer_name": "Farfetch",
+        "name": "Luxury Fashion Item",
+        "brand": "Designer",
+        "category": "Fashion",
+        "price": 1500.0,
+        "original_price": None,
+        "discount_percentage": None,
+        "size_availability": ["M", "L"],
+        "image_urls": ["https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&h=1200&fit=crop&q=80"],
+        "product_url": "https://www.farfetch.com/product/" + request.product_id,
+        "description": "Luxury fashion item",
+        "material": "Premium",
+        "in_stock": True,
+        "rating": 4.5,
+        "scraped_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    }
+    
+    # Create wishlist item with proper field names
     wishlist_item = {
-        "id": f"wish_{int(time.time())}",
+        "wishlist_id": f"wish_{int(time.time())}",
         "user_id": "test_user",
-        "product": product,
+        "product": mock_product,
         "added_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-        "price_alert_threshold": product.get("price", 0) * 0.9,
+        "price_alert_threshold": request.price_alert_threshold or (mock_product["price"] * 0.9),
         "notified": False
     }
     
     # Add to storage
     wishlist_storage.append(wishlist_item)
     
-    return {
-        "success": True,
-        "message": "Added to wishlist",
-        "item": wishlist_item
-    }
+    print(f"✅ Added to wishlist: {request.product_id}")
+    
+    # Return the item directly (iOS expects WishlistItem, not a wrapper)
+    return wishlist_item
 
 
 @router.delete("/{item_id}")
