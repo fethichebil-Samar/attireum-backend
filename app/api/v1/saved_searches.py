@@ -42,47 +42,57 @@ async def get_saved_searches():
     """
     Get all saved searches for the current user
     """
-    # Mock response
-    mock_searches = [
-        {
-            "saved_search_id": "search_1",
-            "user_id": "user_123",
-            "name": "Evening Dresses",
-            "query": {
-                "product_type": "Dresses",
-                "size": "M",
-                "occasion": "Evening",
-                "brand": "Valentino",
-                "price_min": 1000,
-                "price_max": 5000
-            },
-            "enable_daily_briefing": True,
-            "last_checked": datetime.utcnow().isoformat(),
-            "result_count": 42,
-            "created_at": datetime.utcnow().isoformat(),
-            "updated_at": datetime.utcnow().isoformat()
-        },
-        {
-            "saved_search_id": "search_2",
-            "user_id": "user_123",
-            "name": "Casual Chic",
-            "query": {
-                "product_type": "Tops",
-                "size": "S",
-                "occasion": "Day-to-Day / Casual",
-                "brand": None,
-                "price_min": 200,
-                "price_max": 1000
-            },
-            "enable_daily_briefing": False,
-            "last_checked": None,
-            "result_count": 87,
-            "created_at": datetime.utcnow().isoformat(),
-            "updated_at": datetime.utcnow().isoformat()
-        }
-    ]
+    # Return saved searches from in-memory storage, plus mock data
+    all_searches = list(saved_searches_db.values())
     
-    return mock_searches
+    # Add mock data if storage is empty
+    if len(all_searches) == 0:
+        mock_searches = [
+            {
+                "saved_search_id": "search_1",
+                "user_id": "user_123",
+                "name": "Evening Dresses",
+                "query": {
+                    "product_type": "Dresses",
+                    "size": "M",
+                    "occasion": "Evening",
+                    "brands": ["Valentino"],  # Array, not singular
+                    "price_range": {  # Object, not separate min/max
+                        "min": 1000.0,
+                        "max": 5000.0
+                    }
+                },
+                "enable_daily_briefing": True,
+                "last_checked": datetime.utcnow().isoformat() + "Z",
+                "result_count": 42,
+                "created_at": datetime.utcnow().isoformat() + "Z",
+                "updated_at": datetime.utcnow().isoformat() + "Z"
+            },
+            {
+                "saved_search_id": "search_2",
+                "user_id": "user_123",
+                "name": "Casual Chic",
+                "query": {
+                    "product_type": "Tops",
+                    "size": "S",
+                    "occasion": "Day-to-Day / Casual",
+                    "brands": [],  # Empty array
+                    "price_range": {
+                        "min": 200.0,
+                        "max": 1000.0
+                    }
+                },
+                "enable_daily_briefing": False,
+                "last_checked": None,
+                "result_count": 87,
+                "created_at": datetime.utcnow().isoformat() + "Z",
+                "updated_at": datetime.utcnow().isoformat() + "Z"
+            }
+        ]
+        all_searches = mock_searches
+    
+    print(f"📚 Returning {len(all_searches)} saved searches")
+    return all_searches
 
 @router.post("/", response_model=SavedSearchSchema)
 async def create_saved_search(request: CreateSavedSearchRequest):
@@ -99,11 +109,15 @@ async def create_saved_search(request: CreateSavedSearchRequest):
         "enable_daily_briefing": request.enable_daily_briefing,
         "last_checked": None,
         "result_count": 0,
-        "created_at": datetime.utcnow().isoformat(),
-        "updated_at": datetime.utcnow().isoformat()
+        "created_at": datetime.utcnow().isoformat() + "Z",
+        "updated_at": datetime.utcnow().isoformat() + "Z"
     }
     
     saved_searches_db[search_id] = saved_search
+    
+    print(f"✅ Saved search created: {request.name} (briefing: {request.enable_daily_briefing})")
+    print(f"   ID: {search_id}")
+    print(f"   Total searches: {len(saved_searches_db)}")
     
     return saved_search
 
