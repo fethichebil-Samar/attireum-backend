@@ -527,24 +527,52 @@
                     const includesList = document.getElementById('modal-includes');
                     includesList.innerHTML = study.includes.map(item => `<li>${item}</li>`).join('');
 
-                    // Update email subject lines
+                    // Update email subject line for brief
                     const briefBtn = modal.querySelector('.pricing-option:first-child a');
-                    const fullBtn = modal.querySelector('.pricing-option.featured a');
+                    briefBtn.href = `mailto:fethichebil@gmail.com?subject=Book 30-Min Brief: ${encodeURIComponent(study.title)}`;
 
-                    briefBtn.href = `mailto:intelligence@flightdeck.com?subject=Request: 30-Min Brief - ${encodeURIComponent(study.title)}`;
-                    fullBtn.href = `mailto:intelligence@flightdeck.com?subject=Request: Full Study - ${encodeURIComponent(study.title)}`;
+                    // Update hidden form field with study title
+                    document.getElementById('form-study-title').value = study.title;
 
                     // Show modal
                     modal.classList.add('active');
                     document.body.style.overflow = 'hidden';
+
+                    // Reset form view
+                    document.querySelector('.modal-pricing').style.display = 'grid';
+                    document.getElementById('study-form').style.display = 'none';
                 }
             });
         });
+
+        // Handle "Request Summary" button click
+        const fullStudyBtns = document.querySelectorAll('.full-study-btn');
+        fullStudyBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Hide pricing options, show form
+                document.querySelector('.modal-pricing').style.display = 'none';
+                document.getElementById('study-form').style.display = 'block';
+            });
+        });
+
+        // Handle "Back to Options" button
+        const backBtn = document.querySelector('.form-back-btn');
+        if (backBtn) {
+            backBtn.addEventListener('click', function() {
+                // Show pricing options, hide form
+                document.querySelector('.modal-pricing').style.display = 'grid';
+                document.getElementById('study-form').style.display = 'none';
+            });
+        }
 
         // Close modal
         closeBtn.addEventListener('click', function() {
             modal.classList.remove('active');
             document.body.style.overflow = 'auto';
+            // Reset view
+            document.querySelector('.modal-pricing').style.display = 'grid';
+            document.getElementById('study-form').style.display = 'none';
         });
 
         // Close on outside click
@@ -552,6 +580,9 @@
             if (e.target === modal) {
                 modal.classList.remove('active');
                 document.body.style.overflow = 'auto';
+                // Reset view
+                document.querySelector('.modal-pricing').style.display = 'grid';
+                document.getElementById('study-form').style.display = 'none';
             }
         });
 
@@ -560,6 +591,9 @@
             if (e.key === 'Escape' && modal.classList.contains('active')) {
                 modal.classList.remove('active');
                 document.body.style.overflow = 'auto';
+                // Reset view
+                document.querySelector('.modal-pricing').style.display = 'grid';
+                document.getElementById('study-form').style.display = 'none';
             }
         });
     }

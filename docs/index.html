@@ -447,10 +447,10 @@
                             <span class="pricing-icon mono">📄</span>
                             <h4 class="pricing-title">30-Minute Executive Brief</h4>
                         </div>
-                        <p class="pricing-desc">Condensed intelligence summary with key findings and strategic recommendations.</p>
+                        <p class="pricing-desc">Condensed intelligence summary with key findings and strategic recommendations. Book instantly and pay online.</p>
                         <div class="pricing-footer">
-                            <span class="pricing-value mono">Contact for Pricing</span>
-                            <a href="mailto:intelligence@flightdeck.com?subject=Request: 30-Min Brief" class="btn btn-secondary mono">&gt; REQUEST BRIEF</a>
+                            <span class="pricing-value mono">$200 USD</span>
+                            <a href="mailto:fethichebil@gmail.com?subject=Book 30-Min Brief" class="btn btn-secondary mono">&gt; BOOK NOW ($200)</a>
                         </div>
                     </div>
 
@@ -459,12 +459,52 @@
                             <span class="pricing-icon mono">📁</span>
                             <h4 class="pricing-title">Full Study Access</h4>
                         </div>
-                        <p class="pricing-desc">Complete intelligence package with data, analysis, decision-maker profiles, and strategic counsel.</p>
+                        <p class="pricing-desc">Fill the form to receive a summary on the spot. If you decide to proceed, you'll receive the full study + PPT presentation.</p>
                         <div class="pricing-footer">
-                            <span class="pricing-value mono">Contact for Pricing</span>
-                            <a href="mailto:intelligence@flightdeck.com?subject=Request: Full Study" class="btn btn-primary mono">&gt; REQUEST FULL STUDY</a>
+                            <span class="pricing-value mono">Custom Pricing</span>
+                            <a href="#" class="btn btn-primary mono full-study-btn">&gt; REQUEST SUMMARY</a>
                         </div>
                     </div>
+                </div>
+
+                <!-- Full Study Form (Hidden by default) -->
+                <div class="study-request-form" id="study-form" style="display: none;">
+                    <h3 class="form-title">Request Full Study Summary</h3>
+                    <p class="form-subtitle">Fill out this form to receive an executive summary on the spot.</p>
+
+                    <form id="study-contact-form" action="https://formspree.io/f/xgeezdjr" method="POST">
+                        <input type="hidden" name="study_title" id="form-study-title" value="">
+
+                        <div class="form-group">
+                            <label for="name" class="form-label">Full Name *</label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address *</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company" class="form-label">Company / Organization</label>
+                            <input type="text" id="company" name="company" class="form-input">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="role" class="form-label">Role / Title</label>
+                            <input type="text" id="role" name="role" class="form-input">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="use-case" class="form-label">Intended Use Case *</label>
+                            <textarea id="use-case" name="use_case" class="form-textarea" rows="3" required placeholder="What specific transaction or strategic decision is this intelligence supporting?"></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary mono form-back-btn">&lt; BACK TO OPTIONS</button>
+                            <button type="submit" class="btn btn-primary mono">&gt; SUBMIT & RECEIVE SUMMARY</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -481,7 +521,7 @@
                 <div class="contact-block">
                     <div class="contact-item">
                         <span class="contact-label mono">EMAIL:</span>
-                        <a href="mailto:intelligence@flightdeck.com" class="contact-value">intelligence@flightdeck.com</a>
+                        <a href="mailto:fethichebil@gmail.com" class="contact-value">fethichebil@gmail.com</a>
                     </div>
                     <div class="contact-item">
                         <span class="contact-label mono">OFFICE:</span>
@@ -494,7 +534,7 @@
                 </div>
 
                 <div class="final-cta">
-                    <a href="mailto:intelligence@flightdeck.com" class="btn btn-secondary mono">&gt; REQUEST INTELLIGENCE ACCESS</a>
+                    <a href="mailto:fethichebil@gmail.com" class="btn btn-secondary mono">&gt; REQUEST INTELLIGENCE ACCESS</a>
                 </div>
             </div>
         </div>
