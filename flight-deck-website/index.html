@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aviation Infrastructure Intelligence - Strategic advisory for investors, concessionaires, and governments navigating high-stakes infrastructure tenders.">
+    <title>Flight Deck | Aviation Infrastructure Intelligence</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Lora:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="mono">//</span> FLIGHT_DECK
+            </div>
+            <div class="nav-links">
+                <a href="#signal" class="nav-link mono">SIGNAL</a>
+                <a href="#mechanics" class="nav-link mono">MECHANICS</a>
+                <a href="#forecast" class="nav-link mono">FORECAST</a>
+                <a href="#access" class="nav-link mono">ACCESS</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section 1: Dashboard (Hero) -->
+    <section id="dashboard" class="section hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title serif">
+                    AVIATION INFRASTRUCTURE<br>INTELLIGENCE.
+                </h1>
+
+                <div class="hero-meta mono">
+                    <span class="meta-item">// SECTOR: AIRPORT PRIVATIZATION & AAM</span>
+                    <span class="meta-divider">|</span>
+                    <span class="meta-item">// STATUS: <span class="status-indicator"></span> LIVE</span>
+                </div>
+
+                <p class="hero-statement">
+                    We bridge the gap between capital deployment and operational reality. Strategic advisory for investors, concessionaires, and governments navigating high-stakes infrastructure tenders.
+                </p>
+
+                <div class="cta-group">
+                    <a href="#access" class="btn btn-primary mono">&gt; REQUEST BRIEFING</a>
+                </div>
+            </div>
+
+            <!-- Scrolling Ticker -->
+            <div class="ticker-container">
+                <div class="ticker-label mono">LATEST SIGNALS:</div>
+                <div class="ticker">
+                    <div class="ticker-content">
+                        <span class="ticker-item">Concession models shifting in MENA region</span>
+                        <span class="ticker-divider">...</span>
+                        <span class="ticker-item">Regulatory updates from ICAO Assembly</span>
+                        <span class="ticker-divider">...</span>
+                        <span class="ticker-item">CAPEX constraints impacting mid-tier evaluations</span>
+                        <span class="ticker-divider">...</span>
+                        <span class="ticker-item">Advanced Air Mobility infrastructure standards emerging</span>
+                        <span class="ticker-divider">...</span>
+                        <span class="ticker-item">Concession models shifting in MENA region</span>
+                        <span class="ticker-divider">...</span>
+                        <span class="ticker-item">Regulatory updates from ICAO Assembly</span>
+                        <span class="ticker-divider">...</span>
+                        <span class="ticker-item">CAPEX constraints impacting mid-tier evaluations</span>
+                        <span class="ticker-divider">...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Abstract Grid Background -->
+        <div class="grid-overlay"></div>
+    </section>
+
+    <!-- Section 2: The Signal -->
+    <section id="signal" class="section signal-section">
+        <div class="container split-container">
+            <div class="split-left">
+                <h2 class="section-title serif">MARKET DYNAMICS.</h2>
+
+                <p class="section-intro">
+                    Infrastructure opportunities do not happen in a vacuum. We track the raw movements of the aviation market before they become public tenders.
+                </p>
+
+                <div class="deliverables">
+                    <div class="deliverable-item">
+                        <span class="bullet">◆</span>
+                        <div class="deliverable-content">
+                            <h3 class="deliverable-title">Privatization Radar</h3>
+                            <p class="deliverable-desc">Early identification of government asset rotation and concession opportunities.</p>
+                        </div>
+                    </div>
+
+                    <div class="deliverable-item">
+                        <span class="bullet">◆</span>
+                        <div class="deliverable-content">
+                            <h3 class="deliverable-title">Regulatory Impact</h3>
+                            <p class="deliverable-desc">Analysis of ICAO and local civil aviation authority (CAA) policy shifts.</p>
+                        </div>
+                    </div>
+
+                    <div class="deliverable-item">
+                        <span class="bullet">◆</span>
+                        <div class="deliverable-content">
+                            <h3 class="deliverable-title">Competitor Landscape</h3>
+                            <p class="deliverable-desc">Mapping the movements of major infrastructure funds and operators.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="split-right">
+                <div class="data-viz" id="signal-viz">
+                    <!-- Abstract data visualization -->
+                    <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="vizGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#45A29E;stop-opacity:0.3" />
+                                <stop offset="100%" style="stop-color:#45A29E;stop-opacity:0" />
+                            </linearGradient>
+                        </defs>
+
+                        <!-- Grid lines -->
+                        <g class="viz-grid" opacity="0.2">
+                            <line x1="0" y1="100" x2="400" y2="100" stroke="#45A29E" stroke-width="0.5"/>
+                            <line x1="0" y1="200" x2="400" y2="200" stroke="#45A29E" stroke-width="0.5"/>
+                            <line x1="0" y1="300" x2="400" y2="300" stroke="#45A29E" stroke-width="0.5"/>
+                            <line x1="0" y1="400" x2="400" y2="400" stroke="#45A29E" stroke-width="0.5"/>
+
+                            <line x1="100" y1="0" x2="100" y2="500" stroke="#45A29E" stroke-width="0.5"/>
+                            <line x1="200" y1="0" x2="200" y2="500" stroke="#45A29E" stroke-width="0.5"/>
+                            <line x1="300" y1="0" x2="300" y2="500" stroke="#45A29E" stroke-width="0.5"/>
+                        </g>
+
+                        <!-- Data points -->
+                        <g class="viz-data">
+                            <circle cx="50" cy="350" r="4" fill="#45A29E" opacity="0.8"/>
+                            <circle cx="100" cy="280" r="4" fill="#45A29E" opacity="0.8"/>
+                            <circle cx="150" cy="320" r="4" fill="#45A29E" opacity="0.8"/>
+                            <circle cx="200" cy="200" r="4" fill="#45A29E" opacity="0.8"/>
+                            <circle cx="250" cy="240" r="4" fill="#45A29E" opacity="0.8"/>
+                            <circle cx="300" cy="150" r="4" fill="#45A29E" opacity="0.8"/>
+                            <circle cx="350" cy="180" r="4" fill="#45A29E" opacity="0.8"/>
+
+                            <polyline
+                                points="50,350 100,280 150,320 200,200 250,240 300,150 350,180"
+                                fill="none"
+                                stroke="#45A29E"
+                                stroke-width="2"
+                                opacity="0.6"/>
+
+                            <polyline
+                                points="50,350 100,280 150,320 200,200 250,240 300,150 350,180 350,500 50,500"
+                                fill="url(#vizGradient)"
+                                opacity="0.3"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: The Mechanics -->
+    <section id="mechanics" class="section mechanics-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title serif">MOTIVE & MECHANICS.</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <p class="section-intro centered">
+                Financial models fail when they ignore political and operational friction. We dissect the "Why" and "How" behind every deal.
+            </p>
+
+            <div class="mechanics-grid">
+                <div class="mechanics-card">
+                    <div class="card-number mono">01</div>
+                    <h3 class="card-title">Stakeholder Mapping</h3>
+                    <p class="card-desc">Identifying the hidden political and social drivers of concession authorities.</p>
+                    <div class="card-border"></div>
+                </div>
+
+                <div class="mechanics-card">
+                    <div class="card-number mono">02</div>
+                    <h3 class="card-title">Technical Feasibility</h3>
+                    <p class="card-desc">Assessing the operational reality of architectural master plans.</p>
+                    <div class="card-border"></div>
+                </div>
+
+                <div class="mechanics-card">
+                    <div class="card-number mono">03</div>
+                    <h3 class="card-title">Risk Dissection</h3>
+                    <p class="card-desc">Isolating execution risks beyond the balance sheet.</p>
+                    <div class="card-border"></div>
+                </div>
+            </div>
+
+            <!-- Technical Blueprint Background -->
+            <div class="blueprint-overlay">
+                <svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+                    <g class="blueprint-grid" opacity="0.1">
+                        <line x1="0" y1="50" x2="1200" y2="50" stroke="#45A29E" stroke-width="1" stroke-dasharray="5,5"/>
+                        <line x1="0" y1="150" x2="1200" y2="150" stroke="#45A29E" stroke-width="1" stroke-dasharray="5,5"/>
+                        <line x1="0" y1="250" x2="1200" y2="250" stroke="#45A29E" stroke-width="1" stroke-dasharray="5,5"/>
+                        <line x1="0" y1="350" x2="1200" y2="350" stroke="#45A29E" stroke-width="1" stroke-dasharray="5,5"/>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: The Forecast -->
+    <section id="forecast" class="section forecast-section">
+        <div class="container">
+            <div class="forecast-content">
+                <div class="forecast-header">
+                    <h2 class="section-title serif">PREDICTIVE STRATEGY.</h2>
+                    <div class="horizon-line"></div>
+                </div>
+
+                <p class="section-intro">
+                    Aviation infrastructure requires a 15-year horizon. We align immediate investment decisions with long-term technological shifts, including Advanced Air Mobility (AAM) integration.
+                </p>
+
+                <div class="forecast-grid">
+                    <div class="forecast-item">
+                        <div class="forecast-icon mono">&gt;&gt;</div>
+                        <div class="forecast-content-block">
+                            <h3 class="forecast-title">Asset Valuation</h3>
+                            <p class="forecast-desc">Long-term revenue forecasting under changing regulatory environments.</p>
+                        </div>
+                    </div>
+
+                    <div class="forecast-item">
+                        <div class="forecast-icon mono">&gt;&gt;</div>
+                        <div class="forecast-content-block">
+                            <h3 class="forecast-title">Future-Proofing</h3>
+                            <p class="forecast-desc">Strategies for integrating vertiports and drone logistics into legacy assets.</p>
+                        </div>
+                    </div>
+
+                    <div class="forecast-item">
+                        <div class="forecast-icon mono">&gt;&gt;</div>
+                        <div class="forecast-content-block">
+                            <h3 class="forecast-title">Exit Strategy</h3>
+                            <p class="forecast-desc">Defining the value proposition for the end of the concession cycle.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline visualization -->
+                <div class="timeline-viz">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-markers">
+                        <div class="timeline-marker" style="left: 0%">
+                            <span class="marker-dot"></span>
+                            <span class="marker-label mono">NOW</span>
+                        </div>
+                        <div class="timeline-marker" style="left: 33%">
+                            <span class="marker-dot"></span>
+                            <span class="marker-label mono">Y5</span>
+                        </div>
+                        <div class="timeline-marker" style="left: 66%">
+                            <span class="marker-dot"></span>
+                            <span class="marker-label mono">Y10</span>
+                        </div>
+                        <div class="timeline-marker" style="left: 100%">
+                            <span class="marker-dot"></span>
+                            <span class="marker-label mono">Y15</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Access (Contact) -->
+    <section id="access" class="section access-section">
+        <div class="container">
+            <div class="access-content">
+                <h2 class="section-title serif">INITIATE ENGAGEMENT.</h2>
+
+                <p class="access-intro">Direct advisory for decision-makers.</p>
+
+                <div class="contact-block">
+                    <div class="contact-item">
+                        <span class="contact-label mono">EMAIL:</span>
+                        <a href="mailto:advisory@flightdeck.com" class="contact-value">advisory@flightdeck.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label mono">OFFICE:</span>
+                        <span class="contact-value">Montreal | Dubai</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label mono">SECTOR:</span>
+                        <span class="contact-value">Global Infrastructure & Privatization</span>
+                    </div>
+                </div>
+
+                <div class="final-cta">
+                    <a href="mailto:advisory@flightdeck.com" class="btn btn-secondary mono">&gt; ACCESS ADVISORY PORTAL</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Terminal cursor effect -->
+        <div class="cursor-blink"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content mono">
+                <span>© 2025 FLIGHT DECK</span>
+                <span class="footer-divider">|</span>
+                <span>AVIATION INFRASTRUCTURE INTELLIGENCE</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
