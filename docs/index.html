@@ -21,7 +21,7 @@
                 <a href="#signal" class="nav-link mono">SIGNAL</a>
                 <a href="#mechanics" class="nav-link mono">MECHANICS</a>
                 <a href="#forecast" class="nav-link mono">FORECAST</a>
-                <a href="#products" class="nav-link mono">PRODUCTS</a>
+                <a href="#catalog" class="nav-link mono">CATALOG</a>
                 <a href="#access" class="nav-link mono">ACCESS</a>
             </div>
         </div>
@@ -326,7 +326,151 @@
         </div>
     </section>
 
-    <!-- Section 5: Access (Contact) -->
+    <!-- Section 5: Intelligence Catalog -->
+    <section id="catalog" class="section signal-section">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                <h2 class="section-title serif">INTELLIGENCE CATALOG.</h2>
+                <div class="section-line" style="margin: 2rem auto;"></div>
+                <p class="section-intro centered" style="max-width: 800px; margin: 0 auto;">
+                    Available studies and dossiers. Pay exactly as you need based on your budget—choose a 30-minute executive brief or access the full intelligence package.
+                </p>
+            </div>
+
+            <!-- Horizontal Scrolling Study Cards -->
+            <div class="catalog-scroll-container">
+                <div class="catalog-scroll">
+                    <!-- Study Card 1 -->
+                    <div class="catalog-card" data-study="1">
+                        <div class="card-tag mono">INVESTOR ANALYSIS</div>
+                        <h3 class="catalog-card-title">Major Infrastructure Fund Portfolio Rotation - APAC Region</h3>
+                        <p class="catalog-card-date mono">Published: Q1 2025</p>
+                        <p class="catalog-card-preview">Analysis of strategic shifts in top-tier infrastructure funds operating across Asia-Pacific airport privatization...</p>
+                        <div class="catalog-card-cta">
+                            <span class="card-click-hint mono">&gt; CLICK FOR DETAILS</span>
+                        </div>
+                    </div>
+
+                    <!-- Study Card 2 -->
+                    <div class="catalog-card" data-study="2">
+                        <div class="card-tag mono">DECISION-MAKER PROFILES</div>
+                        <h3 class="catalog-card-title">Top 5 Airport Concession Authorities: Key Decision-Makers</h3>
+                        <p class="catalog-card-date mono">Published: Q4 2024</p>
+                        <p class="catalog-card-preview">Comprehensive dossiers on individuals controlling concession decisions across $12B+ in upcoming tenders...</p>
+                        <div class="catalog-card-cta">
+                            <span class="card-click-hint mono">&gt; CLICK FOR DETAILS</span>
+                        </div>
+                    </div>
+
+                    <!-- Study Card 3 -->
+                    <div class="catalog-card" data-study="3">
+                        <div class="card-tag mono">AAM STRATEGY</div>
+                        <h3 class="catalog-card-title">AAM Integration Strategies: Sovereign Wealth Fund Positioning</h3>
+                        <p class="catalog-card-date mono">Published: Q1 2025</p>
+                        <p class="catalog-card-preview">How major SWFs are positioning for Advanced Air Mobility infrastructure investments and vertiport concessions...</p>
+                        <div class="catalog-card-cta">
+                            <span class="card-click-hint mono">&gt; CLICK FOR DETAILS</span>
+                        </div>
+                    </div>
+
+                    <!-- Study Card 4 -->
+                    <div class="catalog-card" data-study="4">
+                        <div class="card-tag mono">REGULATORY IMPACT</div>
+                        <h3 class="catalog-card-title">ICAO Assembly Policy Changes: Investment Implications 2025-2030</h3>
+                        <p class="catalog-card-date mono">Published: Q4 2024</p>
+                        <p class="catalog-card-preview">Regulatory shift analysis and impact on privatization tender structures across 15 target jurisdictions...</p>
+                        <div class="catalog-card-cta">
+                            <span class="card-click-hint mono">&gt; CLICK FOR DETAILS</span>
+                        </div>
+                    </div>
+
+                    <!-- Study Card 5 -->
+                    <div class="catalog-card" data-study="5">
+                        <div class="card-tag mono">COMPETITIVE INTELLIGENCE</div>
+                        <h3 class="catalog-card-title">Global Infrastructure Operators: Strategic Positioning Analysis</h3>
+                        <p class="catalog-card-date mono">Published: Q1 2025</p>
+                        <p class="catalog-card-preview">Behavioral patterns, next-move predictions, and competitive gaps across the top 10 global airport operators...</p>
+                        <div class="catalog-card-cta">
+                            <span class="card-click-hint mono">&gt; CLICK FOR DETAILS</span>
+                        </div>
+                    </div>
+
+                    <!-- Duplicate cards for seamless loop -->
+                    <div class="catalog-card" data-study="1">
+                        <div class="card-tag mono">INVESTOR ANALYSIS</div>
+                        <h3 class="catalog-card-title">Major Infrastructure Fund Portfolio Rotation - APAC Region</h3>
+                        <p class="catalog-card-date mono">Published: Q1 2025</p>
+                        <p class="catalog-card-preview">Analysis of strategic shifts in top-tier infrastructure funds operating across Asia-Pacific airport privatization...</p>
+                        <div class="catalog-card-cta">
+                            <span class="card-click-hint mono">&gt; CLICK FOR DETAILS</span>
+                        </div>
+                    </div>
+
+                    <div class="catalog-card" data-study="2">
+                        <div class="card-tag mono">DECISION-MAKER PROFILES</div>
+                        <h3 class="catalog-card-title">Top 5 Airport Concession Authorities: Key Decision-Makers</h3>
+                        <p class="catalog-card-date mono">Published: Q4 2024</p>
+                        <p class="catalog-card-preview">Comprehensive dossiers on individuals controlling concession decisions across $12B+ in upcoming tenders...</p>
+                        <div class="catalog-card-cta">
+                            <span class="card-click-hint mono">&gt; CLICK FOR DETAILS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Study Detail Modal -->
+    <div id="study-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body">
+                <div class="modal-tag mono" id="modal-tag">TAG</div>
+                <h2 class="modal-title serif" id="modal-title">Study Title</h2>
+                <p class="modal-date mono" id="modal-date">Published: Date</p>
+
+                <div class="modal-description" id="modal-description">
+                    <p>Full study description will appear here...</p>
+                </div>
+
+                <div class="modal-includes">
+                    <h3 class="modal-subtitle">What's Included:</h3>
+                    <ul class="modal-list" id="modal-includes">
+                        <li>Item 1</li>
+                        <li>Item 2</li>
+                    </ul>
+                </div>
+
+                <div class="modal-pricing">
+                    <div class="pricing-option">
+                        <div class="pricing-header">
+                            <span class="pricing-icon mono">📄</span>
+                            <h4 class="pricing-title">30-Minute Executive Brief</h4>
+                        </div>
+                        <p class="pricing-desc">Condensed intelligence summary with key findings and strategic recommendations.</p>
+                        <div class="pricing-footer">
+                            <span class="pricing-value mono">Contact for Pricing</span>
+                            <a href="mailto:intelligence@flightdeck.com?subject=Request: 30-Min Brief" class="btn btn-secondary mono">&gt; REQUEST BRIEF</a>
+                        </div>
+                    </div>
+
+                    <div class="pricing-option featured">
+                        <div class="pricing-header">
+                            <span class="pricing-icon mono">📁</span>
+                            <h4 class="pricing-title">Full Study Access</h4>
+                        </div>
+                        <p class="pricing-desc">Complete intelligence package with data, analysis, decision-maker profiles, and strategic counsel.</p>
+                        <div class="pricing-footer">
+                            <span class="pricing-value mono">Contact for Pricing</span>
+                            <a href="mailto:intelligence@flightdeck.com?subject=Request: Full Study" class="btn btn-primary mono">&gt; REQUEST FULL STUDY</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 6: Access (Contact) -->
     <section id="access" class="section access-section">
         <div class="container">
             <div class="access-content">

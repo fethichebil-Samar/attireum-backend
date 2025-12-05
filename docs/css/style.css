@@ -913,7 +913,331 @@ a.contact-value:hover {
 }
 
 /* ==========================================
-   15. PRINT STYLES
+   15. INTELLIGENCE CATALOG
+   ========================================== */
+
+.catalog-scroll-container {
+    overflow: hidden;
+    position: relative;
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-md) 0;
+}
+
+.catalog-scroll {
+    display: flex;
+    gap: var(--spacing-lg);
+    animation: catalogScroll 60s linear infinite;
+    will-change: transform;
+}
+
+.catalog-scroll:hover {
+    animation-play-state: paused;
+}
+
+@keyframes catalogScroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.catalog-card {
+    min-width: 400px;
+    max-width: 400px;
+    background: rgba(31, 40, 51, 0.3);
+    border: 1px solid rgba(69, 162, 158, 0.2);
+    padding: var(--spacing-lg);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    position: relative;
+    flex-shrink: 0;
+}
+
+.catalog-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--cyan);
+    background: rgba(31, 40, 51, 0.5);
+    box-shadow: 0 12px 30px rgba(69, 162, 158, 0.2);
+}
+
+.card-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: var(--cyan);
+    border: 1px solid var(--cyan);
+    padding: 0.25rem 0.75rem;
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: 0.1em;
+}
+
+.catalog-card-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.4;
+}
+
+.catalog-card-date {
+    font-size: 0.8rem;
+    color: var(--cyan);
+    margin-bottom: var(--spacing-sm);
+    opacity: 0.8;
+}
+
+.catalog-card-preview {
+    font-size: 0.95rem;
+    color: var(--silver);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+}
+
+.catalog-card-cta {
+    margin-top: auto;
+}
+
+.card-click-hint {
+    font-size: 0.85rem;
+    color: var(--cyan);
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+    transition: var(--transition-fast);
+}
+
+.catalog-card:hover .card-click-hint {
+    opacity: 1;
+    letter-spacing: 0.15em;
+}
+
+/* ==========================================
+   16. MODAL (STUDY DETAILS)
+   ========================================== */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(11, 12, 16, 0.95);
+    backdrop-filter: blur(10px);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: var(--dark-grey);
+    border: 2px solid var(--cyan);
+    max-width: 900px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideUp 0.4s ease;
+    box-shadow: 0 20px 60px rgba(69, 162, 158, 0.3);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    font-size: 3rem;
+    color: var(--cyan);
+    cursor: pointer;
+    line-height: 1;
+    transition: var(--transition-fast);
+    z-index: 10;
+}
+
+.modal-close:hover {
+    color: var(--white);
+    transform: rotate(90deg);
+}
+
+.modal-body {
+    padding: var(--spacing-xl);
+}
+
+.modal-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: var(--cyan);
+    border: 1px solid var(--cyan);
+    padding: 0.25rem 0.75rem;
+    margin-bottom: var(--spacing-md);
+    letter-spacing: 0.1em;
+}
+
+.modal-title {
+    font-size: 2.5rem;
+    color: var(--white);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.2;
+}
+
+.modal-date {
+    font-size: 0.9rem;
+    color: var(--cyan);
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.8;
+}
+
+.modal-description {
+    font-size: 1.1rem;
+    color: var(--silver);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-lg);
+}
+
+.modal-includes {
+    margin-bottom: var(--spacing-xl);
+}
+
+.modal-subtitle {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: var(--spacing-sm);
+}
+
+.modal-list {
+    list-style: none;
+    padding: 0;
+}
+
+.modal-list li {
+    font-size: 1rem;
+    color: var(--silver);
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.modal-list li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--cyan);
+}
+
+.modal-pricing {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+.pricing-option {
+    background: rgba(11, 12, 16, 0.5);
+    border: 1px solid rgba(69, 162, 158, 0.3);
+    padding: var(--spacing-lg);
+    transition: var(--transition-smooth);
+}
+
+.pricing-option:hover {
+    border-color: var(--cyan);
+    transform: translateY(-4px);
+}
+
+.pricing-option.featured {
+    border-color: var(--cyan);
+    background: rgba(69, 162, 158, 0.05);
+}
+
+.pricing-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.pricing-icon {
+    font-size: 1.5rem;
+}
+
+.pricing-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--white);
+}
+
+.pricing-desc {
+    font-size: 0.95rem;
+    color: var(--silver);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+    min-height: 60px;
+}
+
+.pricing-footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.pricing-value {
+    font-size: 0.9rem;
+    color: var(--cyan);
+    letter-spacing: 0.05em;
+}
+
+/* ==========================================
+   17. RESPONSIVE (CATALOG & MODAL)
+   ========================================== */
+
+@media (max-width: 768px) {
+    .catalog-card {
+        min-width: 320px;
+        max-width: 320px;
+    }
+
+    .modal-content {
+        width: 95%;
+        max-height: 95vh;
+    }
+
+    .modal-body {
+        padding: var(--spacing-lg);
+    }
+
+    .modal-title {
+        font-size: 2rem;
+    }
+
+    .modal-close {
+        top: 1rem;
+        right: 1rem;
+        font-size: 2.5rem;
+    }
+
+    .modal-pricing {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+}
+
+/* ==========================================
+   18. PRINT STYLES
    ========================================== */
 
 @media print {

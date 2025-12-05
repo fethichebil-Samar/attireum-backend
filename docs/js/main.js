@@ -433,7 +433,139 @@
     initHorizontalScroll();
 
     // ==========================================
-    // 17. PAGE LOAD ANIMATION
+    // 17. INTELLIGENCE CATALOG & MODAL
+    // ==========================================
+
+    function initCatalogModal() {
+        const modal = document.getElementById('study-modal');
+        const cards = document.querySelectorAll('.catalog-card');
+        const closeBtn = document.querySelector('.modal-close');
+
+        // Study data
+        const studyData = {
+            1: {
+                tag: 'INVESTOR ANALYSIS',
+                title: 'Major Infrastructure Fund Portfolio Rotation - APAC Region',
+                date: 'Published: Q1 2025',
+                description: 'Comprehensive analysis of strategic portfolio shifts among top-tier infrastructure funds operating across Asia-Pacific airport privatization opportunities. This study maps decision-making patterns, capital deployment strategies, and organizational changes that signal upcoming investment moves.',
+                includes: [
+                    'Profiles of 8 major infrastructure funds active in APAC',
+                    'Portfolio rotation analysis (exits, acquisitions, strategic shifts)',
+                    'Decision-maker profiles for key investment committees',
+                    'Predicted next moves based on historical patterns',
+                    'Capital deployment timelines and deal flow forecasts'
+                ]
+            },
+            2: {
+                tag: 'DECISION-MAKER PROFILES',
+                title: 'Top 5 Airport Concession Authorities: Key Decision-Makers',
+                date: 'Published: Q4 2024',
+                description: 'In-depth dossiers on the individuals controlling concession decisions across $12B+ in upcoming airport privatization tenders. Understand the personal backgrounds, political alignments, risk appetites, and decision-making frameworks of those who hold veto power.',
+                includes: [
+                    'Individual profiles: 15 key decision-makers across 5 jurisdictions',
+                    'Political influence mapping and stakeholder networks',
+                    'Historical decision patterns and approval timelines',
+                    'Risk tolerance assessment and deal structure preferences',
+                    'Informal influence dynamics and veto points'
+                ]
+            },
+            3: {
+                tag: 'AAM STRATEGY',
+                title: 'AAM Integration Strategies: Sovereign Wealth Fund Positioning',
+                date: 'Published: Q1 2025',
+                description: 'How major sovereign wealth funds are positioning for Advanced Air Mobility infrastructure investments. This forward-looking analysis tracks strategic planning, pilot programs, and organizational changes indicating SWF interest in vertiport concessions and AAM-ready airport assets.',
+                includes: [
+                    'SWF organizational shifts toward AAM/vertiport investments',
+                    'Regulatory engagement and policy influence strategies',
+                    'Joint venture structures and partnership patterns',
+                    'Capital allocation signals for AAM infrastructure',
+                    'Greenfield vs. brownfield investment preferences'
+                ]
+            },
+            4: {
+                tag: 'REGULATORY IMPACT',
+                title: 'ICAO Assembly Policy Changes: Investment Implications 2025-2030',
+                date: 'Published: Q4 2024',
+                description: 'Regulatory shift analysis following the latest ICAO Assembly decisions. Impact assessment on privatization tender structures, concession agreement requirements, and investor obligations across 15 target jurisdictions where policy changes will reshape deal terms.',
+                includes: [
+                    'ICAO policy changes affecting privatization structures',
+                    'Jurisdiction-by-jurisdiction implementation analysis',
+                    'Concession agreement template modifications',
+                    'Investor compliance cost projections',
+                    'Competitive advantage shifts based on regulatory alignment'
+                ]
+            },
+            5: {
+                tag: 'COMPETITIVE INTELLIGENCE',
+                title: 'Global Infrastructure Operators: Strategic Positioning Analysis',
+                date: 'Published: Q1 2025',
+                description: 'Behavioral pattern analysis and next-move predictions for the top 10 global airport operators. Identify competitive gaps, anticipate strategic shifts, and understand where major players are vulnerable or preparing aggressive expansion.',
+                includes: [
+                    'Operator-by-operator strategic analysis (top 10)',
+                    'Portfolio gap analysis and expansion targets',
+                    'Organizational changes signaling strategic shifts',
+                    'Financial capacity and capital availability assessment',
+                    'Predicted tender participation and competitive positioning'
+                ]
+            }
+        };
+
+        // Click handler for cards
+        cards.forEach(card => {
+            card.addEventListener('click', function() {
+                const studyId = this.getAttribute('data-study');
+                const study = studyData[studyId];
+
+                if (study) {
+                    // Populate modal
+                    document.getElementById('modal-tag').textContent = study.tag;
+                    document.getElementById('modal-title').textContent = study.title;
+                    document.getElementById('modal-date').textContent = study.date;
+                    document.getElementById('modal-description').innerHTML = `<p>${study.description}</p>`;
+
+                    // Populate includes list
+                    const includesList = document.getElementById('modal-includes');
+                    includesList.innerHTML = study.includes.map(item => `<li>${item}</li>`).join('');
+
+                    // Update email subject lines
+                    const briefBtn = modal.querySelector('.pricing-option:first-child a');
+                    const fullBtn = modal.querySelector('.pricing-option.featured a');
+
+                    briefBtn.href = `mailto:intelligence@flightdeck.com?subject=Request: 30-Min Brief - ${encodeURIComponent(study.title)}`;
+                    fullBtn.href = `mailto:intelligence@flightdeck.com?subject=Request: Full Study - ${encodeURIComponent(study.title)}`;
+
+                    // Show modal
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        // Close modal
+        closeBtn.addEventListener('click', function() {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close on outside click
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
+
+    // ==========================================
+    // 18. PAGE LOAD ANIMATION
     // ==========================================
 
     window.addEventListener('load', function() {
@@ -444,5 +576,11 @@
             document.body.style.opacity = '1';
         }, 100);
     });
+
+    // ==========================================
+    // 19. INITIALIZE CATALOG
+    // ==========================================
+
+    initCatalogModal();
 
 })();
