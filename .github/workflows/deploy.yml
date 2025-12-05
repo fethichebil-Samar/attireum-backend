@@ -1,0 +1,19 @@
+name: Deploy Flight Deck Website
+
+on:
+  push:
+    branches:
+      - claude/flight-deck-website-01HMKUNyd8F3uJqjFyPBYjsF
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./flight-deck-website
+          publish_branch: gh-pages
