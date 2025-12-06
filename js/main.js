@@ -441,7 +441,7 @@
         const closeBtn = document.querySelector('.modal-close');
 
         // Google Sheets CSV URL
-        const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQVhBlAcTKToaofNO9eA3-CJYNoSjsbkn-qaFw9vrS_49wQ-Bi1tm6gezBeR4dOV1-eu6jYcGXi1tYK/pub?output=csv';
+        const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRt89B1UIpgjRog4xWEzQ8FQSp9VuT8Z_ry68vb5pvD7OAB9O8AkJ4OVE034JyUE6oTYOgnjSnxv_5i/pub?output=csv';
 
         let studyData = {};
 
