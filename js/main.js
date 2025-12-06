@@ -718,20 +718,37 @@
         // Function to load Calendly
         function loadCalendly() {
             const calendlyContainer = document.getElementById('calendly-container');
+            const calendlyDirectLink = document.getElementById('calendly-direct-link');
 
-            // Calendly booking URL
+            // Calendly booking URL with proper prefill parameters
             const calendlyUrl = 'https://calendly.com/fethichebil/30min';
 
-            // Load Calendly iframe with user data pre-filled
-            const prefill = `?name=${encodeURIComponent(onboardingData.name)}&email=${encodeURIComponent(onboardingData.email)}`;
+            // Calendly prefill parameters (proper format)
+            const prefillParams = new URLSearchParams({
+                'name': onboardingData.name,
+                'email': onboardingData.email,
+                'a1': onboardingData.company, // Custom answer 1
+                'a2': onboardingData.position  // Custom answer 2
+            });
+
+            const fullCalendlyUrl = `${calendlyUrl}?${prefillParams.toString()}`;
+
+            // Create iframe with proper Calendly URL
             calendlyContainer.innerHTML = `
-                <iframe src="${calendlyUrl}${prefill}"
-                        width="100%"
-                        height="600"
-                        frameborder="0"
-                        style="border: 1px solid rgba(69, 162, 158, 0.2); border-radius: 4px;">
+                <iframe
+                    src="${fullCalendlyUrl}"
+                    width="100%"
+                    height="700"
+                    frameborder="0"
+                    scrolling="yes"
+                    style="border: 1px solid rgba(69, 162, 158, 0.2); border-radius: 4px; min-height: 700px;">
                 </iframe>
             `;
+
+            // Update direct link with prefill parameters
+            if (calendlyDirectLink) {
+                calendlyDirectLink.href = fullCalendlyUrl;
+            }
         }
 
         // Close modal
