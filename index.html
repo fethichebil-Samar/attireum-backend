@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aviation Infrastructure Intelligence - Strategic advisory for investors, concessionaires, and governments navigating high-stakes infrastructure tenders.">
+    <title>Flight Deck | Aviation Infrastructure Intelligence</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Lora:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="mono">//</span> FLIGHT_DECK
+            </div>
+            <div class="nav-links">
+                <a href="#signal" class="nav-link mono">SIGNAL</a>
+                <a href="#mechanics" class="nav-link mono">MECHANICS</a>
+                <a href="#forecast" class="nav-link mono">FORECAST</a>
+                <a href="#catalog" class="nav-link mono">CATALOG</a>
+                <a href="#access" class="nav-link mono">ACCESS</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section 1: Dashboard (Hero) -->
+    <section id="dashboard" class="section hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title serif">
+                    AVIATION INFRASTRUCTURE<br>INTELLIGENCE.
+                </h1>
+
+                <div class="hero-meta mono">
+                    <span class="meta-item">// SECTOR: AIRPORT PRIVATIZATION & AAM</span>
+                    <span class="meta-divider">|</span>
+                    <span class="meta-item">// STATUS: <span class="status-indicator"></span> LIVE</span>
+                </div>
+
+                <p class="hero-statement">
+                    We transform raw industry data into proprietary, actionable advice. Our intelligence delivers continuous insight for less than the cost of one hour of a senior consultant's time—preventing costly process misalignment that kills deals before they launch.
+                </p>
+
+                <div class="cta-group">
+                    <a href="#access" class="btn btn-primary mono">&gt; REQUEST BRIEFING</a>
+                </div>
+            </div>
+
+            <!-- Scrolling Ticker -->
+            <div class="ticker-container">
+                <div class="ticker-label mono">LATEST SIGNALS:</div>
+                <div class="ticker">
+                    <div class="ticker-content">
+                        <span class="ticker-item">Major infrastructure fund rotating portfolio manager in APAC division</span>
+                        <span class="ticker-divider">...</span>
+                        <span class="ticker-item">Sovereign wealth fund adjusting risk appetite for greenfield projects</span>
+                        <span class="ticker-divider">...</span>
+                        <span class="ticker-item">Key decision-maker departing competitor advisory board</span>
+                        <span class="ticker-divider">...</span>
+                        <span class="ticker-item">Institutional investor shifting allocation criteria for transport assets</span>
+                        <span class="ticker-divider">...</span>
+                        <span class="ticker-item">Major infrastructure fund rotating portfolio manager in APAC division</span>
+                        <span class="ticker-divider">...</span>
+                        <span class="ticker-item">Sovereign wealth fund adjusting risk appetite for greenfield projects</span>
+                        <span class="ticker-divider">...</span>
+                        <span class="ticker-item">Key decision-maker departing competitor advisory board</span>
+                        <span class="ticker-divider">...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Abstract Grid Background -->
+        <div class="grid-overlay"></div>
+    </section>
+
+    <!-- Section 2: The Signal -->
+    <section id="signal" class="section signal-section">
+        <div class="container split-container">
+            <div class="split-left">
+                <h2 class="section-title serif">THE SIGNAL.</h2>
+
+                <p class="section-intro">
+                    Instead of sharing news, we provide proprietary filtering and expert-curated complex activity. You outsource the heavy analytical labor. The value is clear: Save Executive Time by eliminating the need to sift through 95%+ irrelevant "noise" from industry sources.
+                </p>
+
+                <div class="deliverables">
+                    <div class="deliverable-item">
+                        <span class="bullet">◆</span>
+                        <div class="deliverable-content">
+                            <h3 class="deliverable-title">Noise Elimination</h3>
+                            <p class="deliverable-desc">We filter 95%+ of irrelevant industry data, delivering only signals that matter to your specific transaction or strategic position.</p>
+                        </div>
+                    </div>
+
+                    <div class="deliverable-item">
+                        <span class="bullet">◆</span>
+                        <div class="deliverable-content">
+                            <h3 class="deliverable-title">Expert Curation</h3>
+                            <p class="deliverable-desc">Heavy analytical labor outsourced to our team. Complex activity patterns decoded into executive-ready intelligence.</p>
+                        </div>
+                    </div>
+
+                    <div class="deliverable-item">
+                        <span class="bullet">◆</span>
+                        <div class="deliverable-content">
+                            <h3 class="deliverable-title">Time Recovery</h3>
+                            <p class="deliverable-desc">Reclaim hours spent monitoring fragmented sources. Focus on decision-making, not data gathering.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="split-right">
+                <div class="data-viz" id="signal-viz">
+                    <!-- Abstract data visualization -->
+                    <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="vizGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#45A29E;stop-opacity:0.3" />
+                                <stop offset="100%" style="stop-color:#45A29E;stop-opacity:0" />
+                            </linearGradient>
+                        </defs>
+
+                        <!-- Grid lines -->
+                        <g class="viz-grid" opacity="0.2">
+                            <line x1="0" y1="100" x2="400" y2="100" stroke="#45A29E" stroke-width="0.5"/>
+                            <line x1="0" y1="200" x2="400" y2="200" stroke="#45A29E" stroke-width="0.5"/>
+                            <line x1="0" y1="300" x2="400" y2="300" stroke="#45A29E" stroke-width="0.5"/>
+                            <line x1="0" y1="400" x2="400" y2="400" stroke="#45A29E" stroke-width="0.5"/>
+
+                            <line x1="100" y1="0" x2="100" y2="500" stroke="#45A29E" stroke-width="0.5"/>
+                            <line x1="200" y1="0" x2="200" y2="500" stroke="#45A29E" stroke-width="0.5"/>
+                            <line x1="300" y1="0" x2="300" y2="500" stroke="#45A29E" stroke-width="0.5"/>
+                        </g>
+
+                        <!-- Data points -->
+                        <g class="viz-data">
+                            <circle cx="50" cy="350" r="4" fill="#45A29E" opacity="0.8"/>
+                            <circle cx="100" cy="280" r="4" fill="#45A29E" opacity="0.8"/>
+                            <circle cx="150" cy="320" r="4" fill="#45A29E" opacity="0.8"/>
+                            <circle cx="200" cy="200" r="4" fill="#45A29E" opacity="0.8"/>
+                            <circle cx="250" cy="240" r="4" fill="#45A29E" opacity="0.8"/>
+                            <circle cx="300" cy="150" r="4" fill="#45A29E" opacity="0.8"/>
+                            <circle cx="350" cy="180" r="4" fill="#45A29E" opacity="0.8"/>
+
+                            <polyline
+                                points="50,350 100,280 150,320 200,200 250,240 300,150 350,180"
+                                fill="none"
+                                stroke="#45A29E"
+                                stroke-width="2"
+                                opacity="0.6"/>
+
+                            <polyline
+                                points="50,350 100,280 150,320 200,200 250,240 300,150 350,180 350,500 50,500"
+                                fill="url(#vizGradient)"
+                                opacity="0.3"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: The Mechanics -->
+    <section id="mechanics" class="section mechanics-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title serif">THE MECHANICS.</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <p class="section-intro centered">
+                You need to increase (in aeronautical revenue) to expose the motive, mechanics, and political/financial drivers behind the underlying complexity. By offering transparency into this process, you help your readers anticipate procedural risks and Prevent Costly Missteps—a critical value for preventing multi-million dollar failures.
+            </p>
+
+            <div class="mechanics-grid">
+                <div class="mechanics-card">
+                    <div class="card-number mono">01</div>
+                    <h3 class="card-title">Process Alignment</h3>
+                    <p class="card-desc">Focus on process alignment. 8 projects never saw the light because the ultimate path was misaligned. We expose how decisions actually get made.</p>
+                    <div class="card-border"></div>
+                </div>
+
+                <div class="mechanics-card">
+                    <div class="card-number mono">02</div>
+                    <h3 class="card-title">Political & Financial Drivers</h3>
+                    <p class="card-desc">Transparency into the motive, mechanics, and political/financial drivers behind complex infrastructure transactions and investor behavior.</p>
+                    <div class="card-border"></div>
+                </div>
+
+                <div class="mechanics-card">
+                    <div class="card-number mono">03</div>
+                    <h3 class="card-title">Procedural Risk Prevention</h3>
+                    <p class="card-desc">Anticipate procedural risks that kill deals. Prevent costly missteps before they occur—saving millions in aborted projects.</p>
+                    <div class="card-border"></div>
+                </div>
+            </div>
+
+            <!-- Technical Blueprint Background -->
+            <div class="blueprint-overlay">
+                <svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+                    <g class="blueprint-grid" opacity="0.1">
+                        <line x1="0" y1="50" x2="1200" y2="50" stroke="#45A29E" stroke-width="1" stroke-dasharray="5,5"/>
+                        <line x1="0" y1="150" x2="1200" y2="150" stroke="#45A29E" stroke-width="1" stroke-dasharray="5,5"/>
+                        <line x1="0" y1="250" x2="1200" y2="250" stroke="#45A29E" stroke-width="1" stroke-dasharray="5,5"/>
+                        <line x1="0" y1="350" x2="1200" y2="350" stroke="#45A29E" stroke-width="1" stroke-dasharray="5,5"/>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: The Forecast -->
+    <section id="forecast" class="section forecast-section">
+        <div class="container">
+            <div class="forecast-content">
+                <div class="forecast-header">
+                    <h2 class="section-title serif">THE FORECAST.</h2>
+                    <div class="horizon-line"></div>
+                </div>
+
+                <p class="section-intro">
+                    Your service is forward-looking. By offering validated predictions on where investment capital, industry/regulatory knowledge, and AAM are heading, you enable your readers to capture opportunities before they become competitive bids in the privatization arena and related sectors.
+                </p>
+
+                <div class="forecast-grid">
+                    <div class="forecast-item">
+                        <div class="forecast-icon mono">&gt;&gt;</div>
+                        <div class="forecast-content-block">
+                            <h3 class="forecast-title">Pre-Competitive Intelligence</h3>
+                            <p class="forecast-desc">Identify opportunities before public tenders. Track where capital will deploy next based on investor behavior patterns and regulatory signals.</p>
+                        </div>
+                    </div>
+
+                    <div class="forecast-item">
+                        <div class="forecast-icon mono">&gt;&gt;</div>
+                        <div class="forecast-content-block">
+                            <h3 class="forecast-title">Investment Strategy Forecasting</h3>
+                            <p class="forecast-desc">Predict strategic shifts in major funds and concessionaires. Understand evolving AAM integration strategies before they're announced.</p>
+                        </div>
+                    </div>
+
+                    <div class="forecast-item">
+                        <div class="forecast-icon mono">&gt;&gt;</div>
+                        <div class="forecast-content-block">
+                            <h3 class="forecast-title">The Advisor's Position</h3>
+                            <p class="forecast-desc">Clear, decisive strategic counsel backed by rigorous analysis and respectful treatment of counter-arguments. Establish authority and position as the trusted expert.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Tiers visualization -->
+                <div class="timeline-viz">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-markers">
+                        <div class="timeline-marker" style="left: 15%">
+                            <span class="marker-dot"></span>
+                            <span class="marker-label mono">NEWSLETTERS</span>
+                        </div>
+                        <div class="timeline-marker" style="left: 50%">
+                            <span class="marker-dot"></span>
+                            <span class="marker-label mono">DOSSIERS</span>
+                        </div>
+                        <div class="timeline-marker" style="left: 85%">
+                            <span class="marker-dot"></span>
+                            <span class="marker-label mono">DEEP INVOLVEMENT</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4.5: Product Offerings & Pricing -->
+    <section id="products" class="section mechanics-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title serif">ENGAGEMENT MODELS.</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <p class="section-intro centered">
+                Our target audience deals in transactions valued in the millions and billions. The price point will reflect the value of the decision-making insight you provide—a tiny fraction of the potential investment gain or loss.
+            </p>
+
+            <div class="mechanics-grid">
+                <div class="mechanics-card">
+                    <div class="card-number mono">01</div>
+                    <h3 class="card-title">Newsletters</h3>
+                    <p class="card-desc">Weekly intelligence briefs. Continuous delivery for less than the cost of one hour of senior consultant time. No episodic consultant fees.</p>
+                    <div class="card-border"></div>
+                </div>
+
+                <div class="mechanics-card">
+                    <div class="card-number mono">02</div>
+                    <h3 class="card-title">Dossiers (By Use Case)</h3>
+                    <p class="card-desc">Monetizing proprietary knowledge—years of industry experience and insight packaged for your specific transaction or competitive situation.</p>
+                    <div class="card-border"></div>
+                </div>
+
+                <div class="mechanics-card">
+                    <div class="card-number mono">03</div>
+                    <h3 class="card-title">Deep Involvement (Pay-As-You-Use)</h3>
+                    <p class="card-desc">Embedded intelligence partnership. Prevent the 8 projects that never saw the light. Process alignment saves millions in aborted deals.</p>
+                    <div class="card-border"></div>
+                </div>
+            </div>
+
+            <!-- Blueprint Overlay -->
+            <div class="blueprint-overlay">
+                <svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+                    <g class="blueprint-grid" opacity="0.1">
+                        <line x1="0" y1="50" x2="1200" y2="50" stroke="#45A29E" stroke-width="1" stroke-dasharray="5,5"/>
+                        <line x1="0" y1="150" x2="1200" y2="150" stroke="#45A29E" stroke-width="1" stroke-dasharray="5,5"/>
+                        <line x1="0" y1="250" x2="1200" y2="250" stroke="#45A29E" stroke-width="1" stroke-dasharray="5,5"/>
+                        <line x1="0" y1="350" x2="1200" y2="350" stroke="#45A29E" stroke-width="1" stroke-dasharray="5,5"/>
+                    </g>
+                </svg>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Intelligence Catalog -->
+    <section id="catalog" class="section signal-section">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                <h2 class="section-title serif">INTELLIGENCE CATALOG.</h2>
+                <div class="section-line" style="margin: 2rem auto;"></div>
+                <p class="section-intro centered" style="max-width: 800px; margin: 0 auto;">
+                    Available studies and dossiers. Pay exactly as you need based on your budget—choose a 30-minute executive brief or access the full intelligence package.
+                </p>
+            </div>
+
+            <!-- Horizontal Scrolling Study Cards -->
+            <div class="catalog-scroll-container">
+                <div class="catalog-scroll" id="catalog-scroll">
+                    <!-- Cards will be dynamically loaded from Google Sheets -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Study Detail Modal -->
+    <div id="study-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body">
+                <div class="modal-tag mono" id="modal-tag">TAG</div>
+                <h2 class="modal-title serif" id="modal-title">Study Title</h2>
+                <p class="modal-date mono" id="modal-date">Published: Date</p>
+
+                <div class="modal-description" id="modal-description">
+                    <p>Full study description will appear here...</p>
+                </div>
+
+                <div class="modal-includes">
+                    <h3 class="modal-subtitle">What's Included:</h3>
+                    <ul class="modal-list" id="modal-includes">
+                        <li>Item 1</li>
+                        <li>Item 2</li>
+                    </ul>
+                </div>
+
+                <div class="modal-pricing">
+                    <div class="pricing-option">
+                        <div class="pricing-header">
+                            <span class="pricing-icon mono">📄</span>
+                            <h4 class="pricing-title">30-Minute Executive Brief</h4>
+                        </div>
+                        <p class="pricing-desc">Condensed intelligence summary with key findings and strategic recommendations. Book instantly and pay online.</p>
+                        <div class="pricing-footer">
+                            <span class="pricing-value mono">$200 USD</span>
+                            <a href="mailto:fethichebil@gmail.com?subject=Book 30-Min Brief" class="btn btn-secondary mono">&gt; BOOK NOW ($200)</a>
+                        </div>
+                    </div>
+
+                    <div class="pricing-option featured">
+                        <div class="pricing-header">
+                            <span class="pricing-icon mono">📁</span>
+                            <h4 class="pricing-title">Full Study Access</h4>
+                        </div>
+                        <p class="pricing-desc">Fill the form to receive a summary on the spot. If you decide to proceed, you'll receive the full study + PPT presentation.</p>
+                        <div class="pricing-footer">
+                            <span class="pricing-value mono">Custom Pricing</span>
+                            <a href="#" class="btn btn-primary mono full-study-btn">&gt; REQUEST SUMMARY</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Full Study Form (Hidden by default) -->
+                <div class="study-request-form" id="study-form" style="display: none;">
+                    <h3 class="form-title">Request Full Study Summary</h3>
+                    <p class="form-subtitle">Fill out this form to receive an executive summary on the spot.</p>
+
+                    <form id="study-contact-form" action="https://formspree.io/f/xgeezdjr" method="POST">
+                        <input type="hidden" name="study_title" id="form-study-title" value="">
+
+                        <div class="form-group">
+                            <label for="name" class="form-label">Full Name *</label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address *</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company" class="form-label">Company / Organization</label>
+                            <input type="text" id="company" name="company" class="form-input">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="role" class="form-label">Role / Title</label>
+                            <input type="text" id="role" name="role" class="form-input">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="use-case" class="form-label">Intended Use Case *</label>
+                            <textarea id="use-case" name="use_case" class="form-textarea" rows="3" required placeholder="What specific transaction or strategic decision is this intelligence supporting?"></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary mono form-back-btn">&lt; BACK TO OPTIONS</button>
+                            <button type="submit" class="btn btn-primary mono">&gt; SUBMIT & RECEIVE SUMMARY</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 6: Access (Contact) -->
+    <section id="access" class="section access-section">
+        <div class="container">
+            <div class="access-content">
+                <h2 class="section-title serif">INITIATE ENGAGEMENT.</h2>
+
+                <p class="access-intro">Intelligence access for CEOs, investors, asset owners, and competitors.</p>
+
+                <div class="contact-block">
+                    <div class="contact-item">
+                        <span class="contact-label mono">EMAIL:</span>
+                        <a href="mailto:fethichebil@gmail.com" class="contact-value">fethichebil@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label mono">OFFICE:</span>
+                        <span class="contact-value">Montreal | Dubai</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label mono">FOCUS:</span>
+                        <span class="contact-value">Decision-Maker Intelligence | Airport Privatization & AAM</span>
+                    </div>
+                </div>
+
+                <div class="final-cta">
+                    <a href="mailto:fethichebil@gmail.com" class="btn btn-secondary mono">&gt; REQUEST INTELLIGENCE ACCESS</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Terminal cursor effect -->
+        <div class="cursor-blink"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content mono">
+                <span>© 2025 FLIGHT DECK</span>
+                <span class="footer-divider">|</span>
+                <span>AVIATION INFRASTRUCTURE INTELLIGENCE</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
