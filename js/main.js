@@ -582,6 +582,19 @@
                 studyData = {};
             });
 
+        // Store onboarding data
+        let onboardingData = {};
+
+        // Reset modal to initial state (onboarding form)
+        function resetModalView() {
+            document.getElementById('onboarding-section').style.display = 'block';
+            document.getElementById('pricing-section').style.display = 'none';
+            document.getElementById('booking-section').style.display = 'none';
+            document.getElementById('study-form').style.display = 'none';
+            document.getElementById('onboarding-form').reset();
+            onboardingData = {};
+        }
+
         // Initialize modal handlers (called after data is loaded)
         function initializeModalHandlers() {
             // Re-query cards after they've been dynamically created
@@ -604,52 +617,145 @@
                     const includesList = document.getElementById('modal-includes');
                     includesList.innerHTML = study.includes.map(item => `<li>${item}</li>`).join('');
 
-                    // Update email subject line for brief
-                    const briefBtn = modal.querySelector('.pricing-option:first-child a');
-                    briefBtn.href = `mailto:fethichebil@gmail.com?subject=Book 30-Min Brief: ${encodeURIComponent(study.title)}`;
-
                     // Update hidden form field with study title
                     document.getElementById('form-study-title').value = study.title;
 
-                    // Show modal
+                    // Show modal with onboarding section first
+                    resetModalView();
                     modal.classList.add('active');
                     document.body.style.overflow = 'hidden';
-
-                    // Reset form view
-                    document.querySelector('.modal-pricing').style.display = 'grid';
-                    document.getElementById('study-form').style.display = 'none';
                 }
             });
         });
 
-        // Handle "Request Summary" button click
-        const fullStudyBtns = document.querySelectorAll('.full-study-btn');
-        fullStudyBtns.forEach(btn => {
-            btn.addEventListener('click', function(e) {
+        // Handle onboarding form submission
+        const onboardingForm = document.getElementById('onboarding-form');
+        if (onboardingForm) {
+            onboardingForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                // Hide pricing options, show form
-                document.querySelector('.modal-pricing').style.display = 'none';
+
+                // Capture onboarding data
+                onboardingData = {
+                    name: document.getElementById('onboard-name').value,
+                    email: document.getElementById('onboard-email').value,
+                    company: document.getElementById('onboard-company').value,
+                    experience: document.getElementById('onboard-experience').value,
+                    companyType: document.getElementById('onboard-company-type').value,
+                    position: document.getElementById('onboard-position').value,
+                    geography: document.getElementById('onboard-geography').value,
+                    usage: document.getElementById('onboard-usage').value
+                };
+
+                console.log('Onboarding data captured:', onboardingData);
+
+                // Hide onboarding, show pricing options
+                document.getElementById('onboarding-section').style.display = 'none';
+                document.getElementById('pricing-section').style.display = 'grid';
+            });
+        }
+
+        // Handle "Book 30-Min Brief" button
+        const briefBookingBtn = document.querySelector('.brief-booking-btn');
+        if (briefBookingBtn) {
+            briefBookingBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Hide pricing, show booking section
+                document.getElementById('pricing-section').style.display = 'none';
+                document.getElementById('booking-section').style.display = 'block';
+
+                // Load Calendly
+                loadCalendly();
+            });
+        }
+
+        // Handle "Request Summary" button for Full Study
+        const fullStudyBtn = document.querySelector('.full-study-btn');
+        if (fullStudyBtn) {
+            fullStudyBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Populate hidden fields with onboarding data
+                document.getElementById('form-name').value = onboardingData.name;
+                document.getElementById('form-email').value = onboardingData.email;
+                document.getElementById('form-company').value = onboardingData.company;
+                document.getElementById('form-experience').value = onboardingData.experience;
+                document.getElementById('form-company-type').value = onboardingData.companyType;
+                document.getElementById('form-position').value = onboardingData.position;
+                document.getElementById('form-geography').value = onboardingData.geography;
+                document.getElementById('form-usage').value = onboardingData.usage;
+
+                // Populate summary display
+                document.getElementById('summary-name').textContent = onboardingData.name;
+                document.getElementById('summary-email').textContent = onboardingData.email;
+                document.getElementById('summary-company').textContent = onboardingData.company;
+                document.getElementById('summary-position').textContent = onboardingData.position;
+
+                // Hide pricing, show full study form
+                document.getElementById('pricing-section').style.display = 'none';
                 document.getElementById('study-form').style.display = 'block';
             });
-        });
+        }
 
-        // Handle "Back to Options" button
-        const backBtn = document.querySelector('.form-back-btn');
-        if (backBtn) {
-            backBtn.addEventListener('click', function() {
-                // Show pricing options, hide form
-                document.querySelector('.modal-pricing').style.display = 'grid';
+        // Handle "Back to Options" from full study form
+        const formBackBtn = document.querySelector('.form-back-btn');
+        if (formBackBtn) {
+            formBackBtn.addEventListener('click', function() {
                 document.getElementById('study-form').style.display = 'none';
+                document.getElementById('pricing-section').style.display = 'grid';
             });
+        }
+
+        // Handle "Back to Options" from booking section
+        const backToPricingBtn = document.querySelector('.back-to-pricing-btn');
+        if (backToPricingBtn) {
+            backToPricingBtn.addEventListener('click', function() {
+                document.getElementById('booking-section').style.display = 'none';
+                document.getElementById('pricing-section').style.display = 'grid';
+            });
+        }
+
+        // Function to load Calendly
+        function loadCalendly() {
+            const calendlyContainer = document.getElementById('calendly-container');
+
+            // PLACEHOLDER: Replace 'YOUR_CALENDLY_URL_HERE' with your actual Calendly booking URL
+            const calendlyUrl = 'YOUR_CALENDLY_URL_HERE';
+
+            if (calendlyUrl === 'YOUR_CALENDLY_URL_HERE') {
+                // Show placeholder when Calendly URL not configured
+                calendlyContainer.innerHTML = `
+                    <div style="text-align: center; padding: 3rem 2rem; background: rgba(31, 40, 51, 0.3); border: 1px solid rgba(69, 162, 158, 0.2); border-radius: 4px;">
+                        <p class="mono" style="color: var(--cyan); font-size: 1.2rem; margin-bottom: 1rem;">⚠️ Calendly Integration Pending</p>
+                        <p style="color: var(--silver); font-size: 0.95rem; margin-bottom: 0.5rem;">
+                            Please provide your Calendly booking URL to enable calendar scheduling.
+                        </p>
+                        <p style="color: var(--silver); font-size: 0.85rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(69, 162, 158, 0.1);">
+                            <strong>User Details:</strong><br>
+                            ${onboardingData.name} (${onboardingData.email})<br>
+                            ${onboardingData.company} - ${onboardingData.position}
+                        </p>
+                    </div>
+                `;
+            } else {
+                // Load actual Calendly iframe when URL is configured
+                const prefill = `?name=${encodeURIComponent(onboardingData.name)}&email=${encodeURIComponent(onboardingData.email)}`;
+                calendlyContainer.innerHTML = `
+                    <iframe src="${calendlyUrl}${prefill}"
+                            width="100%"
+                            height="600"
+                            frameborder="0"
+                            style="border: 1px solid rgba(69, 162, 158, 0.2); border-radius: 4px;">
+                    </iframe>
+                `;
+            }
         }
 
         // Close modal
         closeBtn.addEventListener('click', function() {
             modal.classList.remove('active');
             document.body.style.overflow = 'auto';
-            // Reset view
-            document.querySelector('.modal-pricing').style.display = 'grid';
-            document.getElementById('study-form').style.display = 'none';
+            resetModalView();
         });
 
         // Close on outside click
@@ -657,9 +763,7 @@
             if (e.target === modal) {
                 modal.classList.remove('active');
                 document.body.style.overflow = 'auto';
-                // Reset view
-                document.querySelector('.modal-pricing').style.display = 'grid';
-                document.getElementById('study-form').style.display = 'none';
+                resetModalView();
             }
         });
 
@@ -668,9 +772,7 @@
             if (e.key === 'Escape' && modal.classList.contains('active')) {
                 modal.classList.remove('active');
                 document.body.style.overflow = 'auto';
-                // Reset view
-                document.querySelector('.modal-pricing').style.display = 'grid';
-                document.getElementById('study-form').style.display = 'none';
+                resetModalView();
             }
         });
         } // End initializeModalHandlers

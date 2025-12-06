@@ -1276,6 +1276,63 @@ a.contact-value:hover {
     flex: 0 0 auto;
 }
 
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+.onboarding-section,
+.booking-section {
+    animation: slideDown 0.4s ease-out;
+}
+
+.payment-section {
+    background: rgba(31, 40, 51, 0.3);
+    border: 1px solid rgba(69, 162, 158, 0.2);
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+    border-radius: 4px;
+}
+
+.onboarding-summary {
+    background: rgba(31, 40, 51, 0.3);
+    border: 1px solid rgba(69, 162, 158, 0.2);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    border-radius: 4px;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.summary-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.summary-label {
+    font-size: 0.85rem;
+    color: var(--cyan);
+    opacity: 0.8;
+}
+
+.summary-value {
+    font-size: 1rem;
+    color: var(--white);
+}
+
+#calendly-container iframe {
+    width: 100%;
+    min-height: 600px;
+    border: none;
+}
+
 /* ==========================================
    17. RESPONSIVE (CATALOG & MODAL)
    ========================================== */
