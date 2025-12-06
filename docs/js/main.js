@@ -441,80 +441,74 @@
         const cards = document.querySelectorAll('.catalog-card');
         const closeBtn = document.querySelector('.modal-close');
 
-        // Study data
-        const studyData = {
-            1: {
-                tag: 'INVESTOR ANALYSIS',
-                title: 'Major Infrastructure Fund Portfolio Rotation - APAC Region',
-                date: 'Published: Q1 2025',
-                description: 'Comprehensive analysis of strategic portfolio shifts among top-tier infrastructure funds operating across Asia-Pacific airport privatization opportunities. This study maps decision-making patterns, capital deployment strategies, and organizational changes that signal upcoming investment moves.',
-                includes: [
-                    'Profiles of 8 major infrastructure funds active in APAC',
-                    'Portfolio rotation analysis (exits, acquisitions, strategic shifts)',
-                    'Decision-maker profiles for key investment committees',
-                    'Predicted next moves based on historical patterns',
-                    'Capital deployment timelines and deal flow forecasts'
-                ]
-            },
-            2: {
-                tag: 'DECISION-MAKER PROFILES',
-                title: 'Top 5 Airport Concession Authorities: Key Decision-Makers',
-                date: 'Published: Q4 2024',
-                description: 'In-depth dossiers on the individuals controlling concession decisions across $12B+ in upcoming airport privatization tenders. Understand the personal backgrounds, political alignments, risk appetites, and decision-making frameworks of those who hold veto power.',
-                includes: [
-                    'Individual profiles: 15 key decision-makers across 5 jurisdictions',
-                    'Political influence mapping and stakeholder networks',
-                    'Historical decision patterns and approval timelines',
-                    'Risk tolerance assessment and deal structure preferences',
-                    'Informal influence dynamics and veto points'
-                ]
-            },
-            3: {
-                tag: 'AAM STRATEGY',
-                title: 'AAM Integration Strategies: Sovereign Wealth Fund Positioning',
-                date: 'Published: Q1 2025',
-                description: 'How major sovereign wealth funds are positioning for Advanced Air Mobility infrastructure investments. This forward-looking analysis tracks strategic planning, pilot programs, and organizational changes indicating SWF interest in vertiport concessions and AAM-ready airport assets.',
-                includes: [
-                    'SWF organizational shifts toward AAM/vertiport investments',
-                    'Regulatory engagement and policy influence strategies',
-                    'Joint venture structures and partnership patterns',
-                    'Capital allocation signals for AAM infrastructure',
-                    'Greenfield vs. brownfield investment preferences'
-                ]
-            },
-            4: {
-                tag: 'REGULATORY IMPACT',
-                title: 'ICAO Assembly Policy Changes: Investment Implications 2025-2030',
-                date: 'Published: Q4 2024',
-                description: 'Regulatory shift analysis following the latest ICAO Assembly decisions. Impact assessment on privatization tender structures, concession agreement requirements, and investor obligations across 15 target jurisdictions where policy changes will reshape deal terms.',
-                includes: [
-                    'ICAO policy changes affecting privatization structures',
-                    'Jurisdiction-by-jurisdiction implementation analysis',
-                    'Concession agreement template modifications',
-                    'Investor compliance cost projections',
-                    'Competitive advantage shifts based on regulatory alignment'
-                ]
-            },
-            5: {
-                tag: 'COMPETITIVE INTELLIGENCE',
-                title: 'Global Infrastructure Operators: Strategic Positioning Analysis',
-                date: 'Published: Q1 2025',
-                description: 'Behavioral pattern analysis and next-move predictions for the top 10 global airport operators. Identify competitive gaps, anticipate strategic shifts, and understand where major players are vulnerable or preparing aggressive expansion.',
-                includes: [
-                    'Operator-by-operator strategic analysis (top 10)',
-                    'Portfolio gap analysis and expansion targets',
-                    'Organizational changes signaling strategic shifts',
-                    'Financial capacity and capital availability assessment',
-                    'Predicted tender participation and competitive positioning'
-                ]
-            }
-        };
+        // Google Sheets CSV URL
+        const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQVhBlAcTKToaofNO9eA3-CJYNoSjsbkn-qaFw9vrS_49wQ-Bi1tm6gezBeR4dOV1-eu6jYcGXi1tYK/pub?output=csv';
 
-        // Click handler for cards
-        cards.forEach(card => {
-            card.addEventListener('click', function() {
-                const studyId = this.getAttribute('data-study');
-                const study = studyData[studyId];
+        let studyData = {};
+
+        // Function to parse CSV
+        function parseCSV(csv) {
+            const lines = csv.split('\n');
+            const headers = lines[0].split(',');
+            const data = {};
+
+            for (let i = 1; i < lines.length; i++) {
+                if (!lines[i].trim()) continue; // Skip empty lines
+
+                // Parse CSV line (handling commas in quoted fields)
+                const values = [];
+                let currentValue = '';
+                let insideQuotes = false;
+
+                for (let char of lines[i]) {
+                    if (char === '"') {
+                        insideQuotes = !insideQuotes;
+                    } else if (char === ',' && !insideQuotes) {
+                        values.push(currentValue.trim());
+                        currentValue = '';
+                    } else {
+                        currentValue += char;
+                    }
+                }
+                values.push(currentValue.trim()); // Push last value
+
+                // Create study object
+                const id = values[0];
+                if (id) {
+                    data[id] = {
+                        tag: values[1] || '',
+                        title: values[2] || '',
+                        date: values[3] || '',
+                        description: values[4] || '',
+                        includes: values[5] ? values[5].split('|').map(item => item.trim()) : []
+                    };
+                }
+            }
+
+            return data;
+        }
+
+        // Fetch data from Google Sheets
+        fetch(SHEET_URL)
+            .then(response => response.text())
+            .then(csv => {
+                studyData = parseCSV(csv);
+                console.log('Studies loaded from Google Sheets:', studyData);
+                initializeModalHandlers();
+            })
+            .catch(error => {
+                console.error('Error loading studies from Google Sheets:', error);
+                // Fallback to empty data
+                studyData = {};
+            });
+
+        // Initialize modal handlers (called after data is loaded)
+        function initializeModalHandlers() {
+            // Click handler for cards
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const studyId = this.getAttribute('data-study');
+                    const study = studyData[studyId];
 
                 if (study) {
                     // Populate modal
@@ -596,7 +590,8 @@
                 document.getElementById('study-form').style.display = 'none';
             }
         });
-    }
+        } // End initializeModalHandlers
+    } // End initCatalogModal
 
     // ==========================================
     // 18. PAGE LOAD ANIMATION
