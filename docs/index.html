@@ -485,11 +485,25 @@
                 <!-- Step 3: 30-Min Booking & Payment (Hidden) -->
                 <div class="booking-section" id="booking-section" style="display: none;">
                     <h3 class="form-title">Book Your 30-Minute Executive Brief</h3>
-                    <p class="form-subtitle">Select a time slot and complete payment to confirm your booking.</p>
+                    <p class="form-subtitle">Select a time slot below and complete payment to confirm your booking.</p>
 
                     <!-- Calendly iframe will be inserted here -->
-                    <div id="calendly-container" style="min-height: 600px; margin: 2rem 0;">
+                    <div id="calendly-container" style="min-height: 700px; margin: 2rem 0;">
                         <p class="mono" style="color: var(--cyan);">Loading calendar...</p>
+                    </div>
+
+                    <!-- Fallback: Direct Calendly Link -->
+                    <div style="text-align: center; margin: 1rem 0;">
+                        <a href="https://calendly.com/fethichebil/30min"
+                           id="calendly-direct-link"
+                           target="_blank"
+                           class="btn btn-secondary mono"
+                           style="display: inline-block;">
+                            &gt; OPEN CALENDAR IN NEW TAB
+                        </a>
+                        <p class="mono" style="color: var(--silver); font-size: 0.75rem; margin-top: 0.5rem;">
+                            If the calendar doesn't load above, click this button
+                        </p>
                     </div>
 
                     <!-- Apple Pay Payment Button -->
