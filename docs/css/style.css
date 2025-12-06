@@ -926,7 +926,7 @@ a.contact-value:hover {
 .catalog-scroll {
     display: flex;
     gap: var(--spacing-lg);
-    animation: catalogScroll 60s linear infinite;
+    animation: catalogScroll 30s linear infinite;
     will-change: transform;
 }
 
