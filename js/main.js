@@ -719,36 +719,19 @@
         function loadCalendly() {
             const calendlyContainer = document.getElementById('calendly-container');
 
-            // PLACEHOLDER: Replace 'YOUR_CALENDLY_URL_HERE' with your actual Calendly booking URL
-            const calendlyUrl = 'YOUR_CALENDLY_URL_HERE';
+            // Calendly booking URL
+            const calendlyUrl = 'https://calendly.com/fethichebil/30min';
 
-            if (calendlyUrl === 'YOUR_CALENDLY_URL_HERE') {
-                // Show placeholder when Calendly URL not configured
-                calendlyContainer.innerHTML = `
-                    <div style="text-align: center; padding: 3rem 2rem; background: rgba(31, 40, 51, 0.3); border: 1px solid rgba(69, 162, 158, 0.2); border-radius: 4px;">
-                        <p class="mono" style="color: var(--cyan); font-size: 1.2rem; margin-bottom: 1rem;">⚠️ Calendly Integration Pending</p>
-                        <p style="color: var(--silver); font-size: 0.95rem; margin-bottom: 0.5rem;">
-                            Please provide your Calendly booking URL to enable calendar scheduling.
-                        </p>
-                        <p style="color: var(--silver); font-size: 0.85rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(69, 162, 158, 0.1);">
-                            <strong>User Details:</strong><br>
-                            ${onboardingData.name} (${onboardingData.email})<br>
-                            ${onboardingData.company} - ${onboardingData.position}
-                        </p>
-                    </div>
-                `;
-            } else {
-                // Load actual Calendly iframe when URL is configured
-                const prefill = `?name=${encodeURIComponent(onboardingData.name)}&email=${encodeURIComponent(onboardingData.email)}`;
-                calendlyContainer.innerHTML = `
-                    <iframe src="${calendlyUrl}${prefill}"
-                            width="100%"
-                            height="600"
-                            frameborder="0"
-                            style="border: 1px solid rgba(69, 162, 158, 0.2); border-radius: 4px;">
-                    </iframe>
-                `;
-            }
+            // Load Calendly iframe with user data pre-filled
+            const prefill = `?name=${encodeURIComponent(onboardingData.name)}&email=${encodeURIComponent(onboardingData.email)}`;
+            calendlyContainer.innerHTML = `
+                <iframe src="${calendlyUrl}${prefill}"
+                        width="100%"
+                        height="600"
+                        frameborder="0"
+                        style="border: 1px solid rgba(69, 162, 158, 0.2); border-radius: 4px;">
+                </iframe>
+            `;
         }
 
         // Close modal
