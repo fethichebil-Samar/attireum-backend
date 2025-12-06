@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Debug</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+            background: #0B0C10;
+            color: #C5C6C7;
+        }
+        pre {
+            background: #1F2833;
+            padding: 15px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        h2 {
+            color: #45A29E;
+        }
+    </style>
+</head>
+<body>
+    <h1>Flight Deck CSV Debug</h1>
+    <h2>Raw CSV Data:</h2>
+    <pre id="raw"></pre>
+    <h2>Parsed Rows:</h2>
+    <pre id="parsed"></pre>
+    <h2>Study Count:</h2>
+    <pre id="count"></pre>
+
+    <script>
+        const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQVhBlAcTKToaofNO9eA3-CJYNoSjsbkn-qaFw9vrS_49wQ-Bi1tm6gezBeR4dOV1-eu6jYcGXi1tYK/pub?output=csv';
+
+        fetch(SHEET_URL + '&t=' + Date.now())
+            .then(response => response.text())
+            .then(csv => {
+                document.getElementById('raw').textContent = csv;
+
+                const lines = csv.split('\n').filter(line => line.trim());
+                document.getElementById('parsed').textContent = `Total lines: ${lines.length}\n\n` +
+                    lines.map((line, i) => `Line ${i}: ${line.substring(0, 100)}${line.length > 100 ? '...' : ''}`).join('\n');
+
+                document.getElementById('count').textContent = `Data rows (excluding header): ${lines.length - 1}`;
+            })
+            .catch(error => {
+                document.getElementById('raw').textContent = 'Error: ' + error;
+            });
+    </script>
+</body>
+</html>
