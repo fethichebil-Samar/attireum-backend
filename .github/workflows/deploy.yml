@@ -5,6 +5,9 @@ on:
     branches:
       - claude/flight-deck-website-01HMKUNyd8F3uJqjFyPBYjsF
 
+permissions:
+  contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest

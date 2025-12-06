@@ -499,9 +499,11 @@
             }
 
             // Skip header row and parse data rows
+            console.log('Total CSV rows (including header):', rows.length);
             for (let i = 1; i < rows.length; i++) {
                 const values = rows[i];
                 const id = values[0];
+                console.log(`Row ${i}: id="${id}", columns=${values.length}`);
 
                 if (id && id.trim()) {
                     data[id] = {
@@ -514,6 +516,7 @@
                 }
             }
 
+            console.log('Final parsed data object:', data);
             return data;
         }
 
@@ -557,8 +560,10 @@
         fetch(SHEET_URL + '&t=' + Date.now())
             .then(response => response.text())
             .then(csv => {
+                console.log('Raw CSV received:', csv);
                 studyData = parseCSV(csv);
                 console.log('Studies loaded from Google Sheets:', studyData);
+                console.log('Number of studies loaded:', Object.keys(studyData).length);
 
                 // Populate catalog with dynamic cards
                 populateCatalog(studyData);
