@@ -926,7 +926,7 @@ a.contact-value:hover {
 .catalog-scroll {
     display: flex;
     gap: var(--spacing-lg);
-    animation: catalogScroll 10s linear infinite;
+    animation: catalogScroll 15s linear infinite;
     will-change: transform;
 }
 
@@ -939,7 +939,7 @@ a.contact-value:hover {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(-50%);
+        transform: translateX(-33.333%);
     }
 }
 

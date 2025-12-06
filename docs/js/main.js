@@ -518,8 +518,8 @@
                 cardsHTML += createCatalogCard(id, data[id]);
             });
 
-            // Duplicate cards for seamless infinite loop
-            const duplicatedHTML = cardsHTML + cardsHTML;
+            // Triple cards for smoother seamless infinite loop
+            const duplicatedHTML = cardsHTML + cardsHTML + cardsHTML;
             catalogContainer.innerHTML = duplicatedHTML;
         }
 
