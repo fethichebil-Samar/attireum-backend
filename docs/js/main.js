@@ -523,8 +523,8 @@
             catalogContainer.innerHTML = duplicatedHTML;
         }
 
-        // Fetch data from Google Sheets
-        fetch(SHEET_URL)
+        // Fetch data from Google Sheets with cache-busting
+        fetch(SHEET_URL + '&t=' + Date.now())
             .then(response => response.text())
             .then(csv => {
                 studyData = parseCSV(csv);
