@@ -445,35 +445,65 @@
 
         let studyData = {};
 
-        // Function to parse CSV
+        // Function to parse CSV (handles multiline fields and proper quoting)
         function parseCSV(csv) {
-            const lines = csv.split('\n');
-            const headers = lines[0].split(',');
             const data = {};
+            const rows = [];
+            let currentRow = [];
+            let currentField = '';
+            let insideQuotes = false;
 
-            for (let i = 1; i < lines.length; i++) {
-                if (!lines[i].trim()) continue; // Skip empty lines
+            // Parse CSV character by character to handle multiline fields
+            for (let i = 0; i < csv.length; i++) {
+                const char = csv[i];
+                const nextChar = csv[i + 1];
 
-                // Parse CSV line (handling commas in quoted fields)
-                const values = [];
-                let currentValue = '';
-                let insideQuotes = false;
-
-                for (let char of lines[i]) {
-                    if (char === '"') {
-                        insideQuotes = !insideQuotes;
-                    } else if (char === ',' && !insideQuotes) {
-                        values.push(currentValue.trim());
-                        currentValue = '';
+                if (char === '"') {
+                    if (insideQuotes && nextChar === '"') {
+                        // Escaped quote
+                        currentField += '"';
+                        i++; // Skip next quote
                     } else {
-                        currentValue += char;
+                        // Toggle quote state
+                        insideQuotes = !insideQuotes;
                     }
+                } else if (char === ',' && !insideQuotes) {
+                    // End of field
+                    currentRow.push(currentField.trim());
+                    currentField = '';
+                } else if ((char === '\n' || char === '\r') && !insideQuotes) {
+                    // End of row
+                    if (currentField || currentRow.length > 0) {
+                        currentRow.push(currentField.trim());
+                        if (currentRow.some(field => field !== '')) {
+                            rows.push(currentRow);
+                        }
+                        currentRow = [];
+                        currentField = '';
+                    }
+                    // Skip \r\n combinations
+                    if (char === '\r' && nextChar === '\n') {
+                        i++;
+                    }
+                } else {
+                    currentField += char;
                 }
-                values.push(currentValue.trim()); // Push last value
+            }
 
-                // Create study object
+            // Push last field and row if any
+            if (currentField || currentRow.length > 0) {
+                currentRow.push(currentField.trim());
+                if (currentRow.some(field => field !== '')) {
+                    rows.push(currentRow);
+                }
+            }
+
+            // Skip header row and parse data rows
+            for (let i = 1; i < rows.length; i++) {
+                const values = rows[i];
                 const id = values[0];
-                if (id) {
+
+                if (id && id.trim()) {
                     data[id] = {
                         tag: values[1] || '',
                         title: values[2] || '',
