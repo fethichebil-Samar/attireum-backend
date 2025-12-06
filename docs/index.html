@@ -367,7 +367,96 @@
                     </ul>
                 </div>
 
-                <div class="modal-pricing">
+                <!-- Step 1: Onboarding Form (Shown First) -->
+                <div class="onboarding-section" id="onboarding-section">
+                    <h3 class="form-title">Before Proceeding</h3>
+                    <p class="form-subtitle">Please provide some information to ensure this intelligence matches your needs.</p>
+
+                    <form id="onboarding-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="onboard-name" class="form-label">Full Name *</label>
+                                <input type="text" id="onboard-name" name="name" class="form-input" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="onboard-email" class="form-label">Email Address *</label>
+                                <input type="email" id="onboard-email" name="email" class="form-input" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="onboard-company" class="form-label">Company / Organization *</label>
+                                <input type="text" id="onboard-company" name="company" class="form-input" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="onboard-experience" class="form-label">Years of Experience *</label>
+                                <select id="onboard-experience" name="experience" class="form-input" required>
+                                    <option value="">Select...</option>
+                                    <option value="0-2">0-2 years</option>
+                                    <option value="3-5">3-5 years</option>
+                                    <option value="6-10">6-10 years</option>
+                                    <option value="11-15">11-15 years</option>
+                                    <option value="16+">16+ years</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="onboard-company-type" class="form-label">Company Type *</label>
+                                <select id="onboard-company-type" name="company_type" class="form-input" required>
+                                    <option value="">Select...</option>
+                                    <option value="regulator">Regulator / Government Agency</option>
+                                    <option value="investor">Investor / Fund</option>
+                                    <option value="operator">Airport / Infrastructure Operator</option>
+                                    <option value="contractor">Contractor / Service Provider</option>
+                                    <option value="consultant">Consultant / Advisory</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="onboard-position" class="form-label">Your Position *</label>
+                                <select id="onboard-position" name="position" class="form-input" required>
+                                    <option value="">Select...</option>
+                                    <option value="ceo">CEO / C-Level Executive</option>
+                                    <option value="director">Director / VP</option>
+                                    <option value="manager">Middle Management</option>
+                                    <option value="analyst">Analyst / Specialist</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="onboard-geography" class="form-label">Primary Geography of Interest *</label>
+                            <select id="onboard-geography" name="geography" class="form-input" required>
+                                <option value="">Select...</option>
+                                <option value="mena">MENA (Middle East & North Africa)</option>
+                                <option value="americas">Americas</option>
+                                <option value="europe">Europe</option>
+                                <option value="apac">APAC (Asia-Pacific)</option>
+                                <option value="africa">Sub-Saharan Africa</option>
+                                <option value="global">Global</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="onboard-usage" class="form-label">Why do you need this study? *</label>
+                            <textarea id="onboard-usage" name="usage" class="form-textarea" rows="3" required placeholder="e.g., M&A due diligence, investment decision, competitive analysis, regulatory planning..."></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary mono">&gt; CONTINUE TO OPTIONS</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Step 2: Pricing Options (Hidden until onboarding complete) -->
+                <div class="modal-pricing" id="pricing-section" style="display: none;">
                     <div class="pricing-option">
                         <div class="pricing-header">
                             <span class="pricing-icon mono">📄</span>
@@ -376,7 +465,7 @@
                         <p class="pricing-desc">Condensed intelligence summary with key findings and strategic recommendations. Book instantly and pay online.</p>
                         <div class="pricing-footer">
                             <span class="pricing-value mono">$200 USD</span>
-                            <a href="mailto:fethichebil@gmail.com?subject=Book 30-Min Brief" class="btn btn-secondary mono">&gt; BOOK NOW ($200)</a>
+                            <button class="btn btn-secondary mono brief-booking-btn">&gt; BOOK NOW ($200)</button>
                         </div>
                     </div>
 
@@ -385,45 +474,76 @@
                             <span class="pricing-icon mono">📁</span>
                             <h4 class="pricing-title">Full Study Access</h4>
                         </div>
-                        <p class="pricing-desc">Fill the form to receive a summary on the spot. If you decide to proceed, you'll receive the full study + PPT presentation.</p>
+                        <p class="pricing-desc">Request a summary on the spot. If you decide to proceed, you'll receive the full study + PPT presentation.</p>
                         <div class="pricing-footer">
                             <span class="pricing-value mono">Custom Pricing</span>
-                            <a href="#" class="btn btn-primary mono full-study-btn">&gt; REQUEST SUMMARY</a>
+                            <button class="btn btn-primary mono full-study-btn">&gt; REQUEST SUMMARY</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Full Study Form (Hidden by default) -->
+                <!-- Step 3: 30-Min Booking & Payment (Hidden) -->
+                <div class="booking-section" id="booking-section" style="display: none;">
+                    <h3 class="form-title">Book Your 30-Minute Executive Brief</h3>
+                    <p class="form-subtitle">Select a time slot and complete payment to confirm your booking.</p>
+
+                    <!-- Calendly iframe will be inserted here -->
+                    <div id="calendly-container" style="min-height: 600px; margin: 2rem 0;">
+                        <p class="mono" style="color: var(--cyan);">Loading calendar...</p>
+                    </div>
+
+                    <!-- Apple Pay Payment Button -->
+                    <div class="payment-section">
+                        <h4 class="modal-subtitle">Complete Payment ($200)</h4>
+                        <p class="form-subtitle mono">Secure payment via Apple Pay or Card</p>
+
+                        <!-- Stripe Payment Button will go here -->
+                        <div id="payment-button-container">
+                            <p class="mono" style="color: var(--silver); font-size: 0.9rem;">Payment link will be configured...</p>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary mono back-to-pricing-btn">&lt; BACK TO OPTIONS</button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Full Study Request (Hidden) -->
                 <div class="study-request-form" id="study-form" style="display: none;">
                     <h3 class="form-title">Request Full Study Summary</h3>
-                    <p class="form-subtitle">Fill out this form to receive an executive summary on the spot.</p>
+                    <p class="form-subtitle">Confirm your details to receive an executive summary on the spot.</p>
 
                     <form id="study-contact-form" action="https://formspree.io/f/xgeezdjr" method="POST">
                         <input type="hidden" name="study_title" id="form-study-title" value="">
+                        <input type="hidden" name="name" id="form-name" value="">
+                        <input type="hidden" name="email" id="form-email" value="">
+                        <input type="hidden" name="company" id="form-company" value="">
+                        <input type="hidden" name="experience" id="form-experience" value="">
+                        <input type="hidden" name="company_type" id="form-company-type" value="">
+                        <input type="hidden" name="position" id="form-position" value="">
+                        <input type="hidden" name="geography" id="form-geography" value="">
+                        <input type="hidden" name="usage" id="form-usage" value="">
 
-                        <div class="form-group">
-                            <label for="name" class="form-label">Full Name *</label>
-                            <input type="text" id="name" name="name" class="form-input" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email" class="form-label">Email Address *</label>
-                            <input type="email" id="email" name="email" class="form-input" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="company" class="form-label">Company / Organization</label>
-                            <input type="text" id="company" name="company" class="form-input">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="role" class="form-label">Role / Title</label>
-                            <input type="text" id="role" name="role" class="form-input">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="use-case" class="form-label">Intended Use Case *</label>
-                            <textarea id="use-case" name="use_case" class="form-textarea" rows="3" required placeholder="What specific transaction or strategic decision is this intelligence supporting?"></textarea>
+                        <div class="onboarding-summary">
+                            <h4 class="modal-subtitle">Your Information:</h4>
+                            <div class="summary-grid">
+                                <div class="summary-item">
+                                    <span class="summary-label mono">Name:</span>
+                                    <span class="summary-value" id="summary-name">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label mono">Email:</span>
+                                    <span class="summary-value" id="summary-email">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label mono">Company:</span>
+                                    <span class="summary-value" id="summary-company">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label mono">Position:</span>
+                                    <span class="summary-value" id="summary-position">-</span>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-actions">
