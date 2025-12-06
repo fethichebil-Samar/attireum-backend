@@ -545,7 +545,7 @@
             const catalogContainer = document.getElementById('catalog-scroll');
             if (!catalogContainer) return;
 
-            // Build cards HTML
+            // Build cards HTML - simple grid layout, no duplication needed
             let cardsHTML = '';
             const studyIds = Object.keys(data);
             console.log('Building cards for study IDs:', studyIds);
@@ -555,12 +555,10 @@
                 cardsHTML += createCatalogCard(id, data[id]);
             });
 
-            // Duplicate cards enough times for smooth infinite scroll
-            // With 6 studies, duplicate 4x to ensure smooth looping
-            const duplicatedHTML = cardsHTML + cardsHTML + cardsHTML + cardsHTML;
-            catalogContainer.innerHTML = duplicatedHTML;
+            // Display cards in grid (no duplication needed)
+            catalogContainer.innerHTML = cardsHTML;
 
-            console.log(`Total cards created: ${studyIds.length} unique × 4 = ${studyIds.length * 4} cards`);
+            console.log(`Total cards displayed: ${studyIds.length} studies`);
         }
 
         // Fetch data from Google Sheets with cache-busting
