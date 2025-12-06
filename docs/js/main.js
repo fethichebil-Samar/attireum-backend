@@ -547,13 +547,20 @@
 
             // Build cards HTML
             let cardsHTML = '';
-            Object.keys(data).forEach(id => {
+            const studyIds = Object.keys(data);
+            console.log('Building cards for study IDs:', studyIds);
+
+            studyIds.forEach(id => {
+                console.log('Creating card for study:', id, data[id].title);
                 cardsHTML += createCatalogCard(id, data[id]);
             });
 
-            // Triple cards for smoother seamless infinite loop
-            const duplicatedHTML = cardsHTML + cardsHTML + cardsHTML;
+            // Duplicate cards enough times for smooth infinite scroll
+            // With 6 studies, duplicate 4x to ensure smooth looping
+            const duplicatedHTML = cardsHTML + cardsHTML + cardsHTML + cardsHTML;
             catalogContainer.innerHTML = duplicatedHTML;
+
+            console.log(`Total cards created: ${studyIds.length} unique × 4 = ${studyIds.length * 4} cards`);
         }
 
         // Fetch data from Google Sheets with cache-busting
