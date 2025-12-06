@@ -438,7 +438,6 @@
 
     function initCatalogModal() {
         const modal = document.getElementById('study-modal');
-        const cards = document.querySelectorAll('.catalog-card');
         const closeBtn = document.querySelector('.modal-close');
 
         // Google Sheets CSV URL
@@ -488,12 +487,53 @@
             return data;
         }
 
+        // Function to create a catalog card HTML
+        function createCatalogCard(id, study) {
+            // Truncate description to ~100 chars for preview
+            const preview = study.description.length > 120
+                ? study.description.substring(0, 120) + '...'
+                : study.description;
+
+            return `
+                <div class="catalog-card" data-study="${id}">
+                    <div class="card-tag mono">${study.tag}</div>
+                    <h3 class="catalog-card-title">${study.title}</h3>
+                    <p class="catalog-card-date mono">${study.date}</p>
+                    <p class="catalog-card-preview">${preview}</p>
+                    <div class="catalog-card-cta">
+                        <span class="card-click-hint mono">&gt; CLICK FOR DETAILS</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to populate catalog with cards
+        function populateCatalog(data) {
+            const catalogContainer = document.getElementById('catalog-scroll');
+            if (!catalogContainer) return;
+
+            // Build cards HTML
+            let cardsHTML = '';
+            Object.keys(data).forEach(id => {
+                cardsHTML += createCatalogCard(id, data[id]);
+            });
+
+            // Duplicate cards for seamless infinite loop
+            const duplicatedHTML = cardsHTML + cardsHTML;
+            catalogContainer.innerHTML = duplicatedHTML;
+        }
+
         // Fetch data from Google Sheets
         fetch(SHEET_URL)
             .then(response => response.text())
             .then(csv => {
                 studyData = parseCSV(csv);
                 console.log('Studies loaded from Google Sheets:', studyData);
+
+                // Populate catalog with dynamic cards
+                populateCatalog(studyData);
+
+                // Initialize modal handlers after cards are created
                 initializeModalHandlers();
             })
             .catch(error => {
@@ -504,6 +544,9 @@
 
         // Initialize modal handlers (called after data is loaded)
         function initializeModalHandlers() {
+            // Re-query cards after they've been dynamically created
+            const cards = document.querySelectorAll('.catalog-card');
+
             // Click handler for cards
             cards.forEach(card => {
                 card.addEventListener('click', function() {
