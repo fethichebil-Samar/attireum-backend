@@ -917,42 +917,29 @@ a.contact-value:hover {
    ========================================== */
 
 .catalog-scroll-container {
-    overflow: hidden;
-    position: relative;
     margin-top: var(--spacing-xl);
     padding: var(--spacing-md) 0;
 }
 
 .catalog-scroll {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: var(--spacing-lg);
-    animation: catalogScroll 70s linear infinite;
-    will-change: transform;
-}
-
-.catalog-scroll:hover {
-    animation-play-state: paused;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 @keyframes catalogScroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-25%);
-    }
+    /* Animation removed - now using static grid */
 }
 
 .catalog-card {
-    min-width: 400px;
-    max-width: 400px;
     background: rgba(31, 40, 51, 0.3);
     border: 1px solid rgba(69, 162, 158, 0.2);
     padding: var(--spacing-lg);
     cursor: pointer;
     transition: var(--transition-smooth);
     position: relative;
-    flex-shrink: 0;
 }
 
 .catalog-card:hover {
