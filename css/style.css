@@ -688,7 +688,7 @@ body {
 
 .access-intro {
     font-size: 1.2rem;
-    color: var(--silver);
+    color: #1a1a1a;
     margin-bottom: var(--spacing-xl);
 }
 
@@ -716,9 +716,10 @@ body {
 
 .contact-label {
     min-width: 120px;
-    color: var(--cyan);
+    color: var(--dark-blue);
     font-size: 0.85rem;
     letter-spacing: 0.1em;
+    font-weight: 600;
 }
 
 .contact-value {
@@ -736,20 +737,6 @@ a.contact-value:hover {
     margin-top: var(--spacing-xl);
 }
 
-/* Cursor Blink Effect */
-.cursor-blink {
-    display: inline-block;
-    width: 12px;
-    height: 24px;
-    background: var(--cyan);
-    margin-left: 0.5rem;
-    animation: blink 1s infinite;
-}
-
-@keyframes blink {
-    0%, 49% { opacity: 1; }
-    50%, 100% { opacity: 0; }
-}
 
 /* ==========================================
    11. FOOTER
