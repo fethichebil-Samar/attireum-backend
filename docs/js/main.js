@@ -863,6 +863,10 @@
 
                 isTransitioning = true;
 
+                // IMMEDIATELY update active tab states for slide animation
+                sideTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+
                 // Set overlay color based on theme
                 if (theme === 'strategic') {
                     themeOverlay.style.background = '#0066CC';
@@ -870,8 +874,10 @@
                     themeOverlay.style.background = '#E67E22';
                 }
 
-                // Trigger overlay fade in
-                themeOverlay.classList.add('active');
+                // Small delay to let tab animation start, then trigger overlay
+                setTimeout(() => {
+                    themeOverlay.classList.add('active');
+                }, 50);
 
                 // Wait for overlay to cover screen, then switch theme
                 setTimeout(() => {
@@ -880,10 +886,6 @@
                     // Add new theme class
                     body.classList.add(`theme-${theme}`);
 
-                    // Update active tab
-                    sideTabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-
                     // Fade out overlay
                     setTimeout(() => {
                         themeOverlay.classList.remove('active');
@@ -891,7 +893,7 @@
                             isTransitioning = false;
                         }, 800);
                     }, 100);
-                }, 400);
+                }, 500);
             });
         });
 
