@@ -792,9 +792,59 @@
     });
 
     // ==========================================
-    // 19. INITIALIZE CATALOG
+    // 19. SECTION CTA BOOKING BUTTONS
+    // ==========================================
+
+    function initSectionCTAs() {
+        const ctaButtons = document.querySelectorAll('.booking-cta-btn');
+        const modal = document.getElementById('study-modal');
+
+        ctaButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const section = this.getAttribute('data-section');
+                const questionTextarea = document.getElementById(`${section}-question`);
+                const userQuestion = questionTextarea ? questionTextarea.value.trim() : '';
+
+                if (!userQuestion) {
+                    alert('Please describe your challenge or question before booking.');
+                    questionTextarea.focus();
+                    return;
+                }
+
+                // Update modal content for direct booking
+                document.getElementById('modal-tag').textContent = section.toUpperCase();
+                document.getElementById('modal-title').textContent = `30-Min ${section.charAt(0).toUpperCase() + section.slice(1)} Consultation`;
+                document.getElementById('modal-date').textContent = 'Direct Booking';
+                document.getElementById('modal-description').innerHTML = `<p>You're booking a 30-minute consultation to discuss: <strong>${userQuestion}</strong></p>`;
+
+                // Hide includes section for direct booking
+                document.querySelector('.modal-includes').style.display = 'none';
+
+                // Pre-fill onboarding form with user question
+                setTimeout(() => {
+                    const usageField = document.getElementById('onboard-usage');
+                    if (usageField) {
+                        usageField.value = userQuestion;
+                    }
+                }, 100);
+
+                // Show modal with onboarding
+                document.getElementById('onboarding-section').style.display = 'block';
+                document.getElementById('pricing-section').style.display = 'none';
+                document.getElementById('booking-section').style.display = 'none';
+                document.getElementById('study-form').style.display = 'none';
+
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+    }
+
+    // ==========================================
+    // 20. INITIALIZE CATALOG
     // ==========================================
 
     initCatalogModal();
+    initSectionCTAs();
 
 })();

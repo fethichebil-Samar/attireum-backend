@@ -1334,6 +1334,98 @@ a.contact-value:hover {
 }
 
 /* ==========================================
+   BOOKING CTA SECTIONS
+   ========================================== */
+
+.section-cta {
+    background: rgba(31, 40, 51, 0.4);
+    border-top: 2px solid rgba(69, 162, 158, 0.3);
+    border-bottom: 2px solid rgba(69, 162, 158, 0.3);
+    padding: var(--spacing-xl) 0;
+    margin: var(--spacing-xl) 0;
+}
+
+.cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cta-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--cyan);
+    margin-bottom: var(--spacing-md);
+    font-family: var(--font-mono);
+    letter-spacing: 0.05em;
+}
+
+.cta-description {
+    font-size: 1.1rem;
+    color: var(--silver);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-lg);
+}
+
+.cta-form {
+    margin-top: var(--spacing-lg);
+}
+
+.cta-textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 1rem;
+    background: rgba(11, 12, 16, 0.6);
+    border: 1px solid rgba(69, 162, 158, 0.3);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    resize: vertical;
+    margin-bottom: var(--spacing-md);
+    transition: var(--transition-smooth);
+}
+
+.cta-textarea:focus {
+    outline: none;
+    border-color: var(--cyan);
+    background: rgba(11, 12, 16, 0.8);
+}
+
+.cta-textarea::placeholder {
+    color: rgba(197, 198, 199, 0.4);
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: var(--cyan);
+    color: var(--black);
+    font-family: var(--font-mono);
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+}
+
+.cta-button:hover {
+    background: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(69, 162, 158, 0.3);
+}
+
+.cta-note {
+    margin-top: var(--spacing-md);
+    font-size: 0.85rem;
+    color: var(--silver);
+    opacity: 0.7;
+    font-family: var(--font-mono);
+}
+
+/* ==========================================
    17. RESPONSIVE (CATALOG & MODAL)
    ========================================== */
 
