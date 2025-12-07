@@ -1428,6 +1428,26 @@ a.contact-value-new:hover {
     margin: var(--spacing-xl) 0;
 }
 
+.section-cta-tech {
+    background: rgba(39, 174, 96, 0.1);
+    border-top: 2px solid #27AE60;
+    border-bottom: 2px solid #27AE60;
+}
+
+.section-cta-tech .cta-title {
+    color: #27AE60;
+}
+
+.section-cta-tech .cta-button {
+    background: #27AE60;
+    border-color: #27AE60;
+}
+
+.section-cta-tech .cta-button:hover {
+    background: #2ECC71;
+    border-color: #2ECC71;
+}
+
 .cta-content {
     max-width: 800px;
     margin: 0 auto;
@@ -1573,6 +1593,10 @@ a.contact-value-new:hover {
     transform: translateX(100%);
 }
 
+.slide-panel-tech {
+    background: linear-gradient(135deg, #27AE60 0%, #2ECC71 100%);
+}
+
 .slide-panel.active {
     transform: translateX(0);
 }
@@ -1606,6 +1630,10 @@ a.contact-value-new:hover {
 
 .slide-panel-right .panel-close:hover {
     color: #E67E22;
+}
+
+.slide-panel-tech .panel-close:hover {
+    color: #27AE60;
 }
 
 /* Panel Content */
@@ -1741,6 +1769,18 @@ a.contact-value-new:hover {
     transform: translateY(-50%) translateX(20px);
 }
 
+.side-tab-bottom {
+    left: 2rem;
+    bottom: 2rem;
+    top: auto;
+    background: #27AE60;
+    color: white;
+    border-radius: 30px;
+    transform: translateY(20px);
+    width: 200px;
+    height: 60px;
+}
+
 .side-tab:hover {
     width: 70px;
     box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
@@ -1754,6 +1794,11 @@ a.contact-value-new:hover {
     transform: translateY(-50%) translateX(10px);
 }
 
+.side-tab-bottom:hover {
+    transform: translateY(10px);
+    width: 210px;
+}
+
 .side-tab.active {
     width: 80px;
 }
@@ -1764,6 +1809,15 @@ a.contact-value-new:hover {
 
 .side-tab-right.active {
     transform: translateY(-50%) translateX(0);
+}
+
+.side-tab-bottom.active {
+    transform: translateY(0);
+    width: 220px;
+}
+
+.side-tab-bottom .side-tab-text {
+    writing-mode: horizontal-tb;
 }
 
 .side-tab-text {

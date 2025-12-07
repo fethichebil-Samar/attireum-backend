@@ -849,7 +849,8 @@
         const sideTabs = document.querySelectorAll('.side-tab');
         const strategicPanel = document.getElementById('strategic-panel');
         const marketPanel = document.getElementById('market-panel');
-        const allPanels = [strategicPanel, marketPanel];
+        const technologyPanel = document.getElementById('technology-panel');
+        const allPanels = [strategicPanel, marketPanel, technologyPanel];
 
         // Tab click handlers
         sideTabs.forEach(tab => {
@@ -867,6 +868,11 @@
                     this.classList.add('active');
                 } else if (panelType === 'market') {
                     marketPanel.classList.add('active');
+                    // Update tab states
+                    sideTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                } else if (panelType === 'technology') {
+                    technologyPanel.classList.add('active');
                     // Update tab states
                     sideTabs.forEach(t => t.classList.remove('active'));
                     this.classList.add('active');
