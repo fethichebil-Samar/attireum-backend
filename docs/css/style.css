@@ -1,6 +1,6 @@
 /* ==========================================
    FLIGHT DECK - AVIATION INFRASTRUCTURE INTELLIGENCE
-   Design System: Brutalist Terminal Aesthetic
+   Design System: Clean Professional Blue & White
    ========================================== */
 
 /* ==========================================
@@ -14,13 +14,23 @@
 }
 
 :root {
-    /* Color Palette */
-    --black: #0B0C10;
-    --silver: #C5C6C7;
-    --cyan: #45A29E;
-    --cyan-dark: #2D6F6D;
+    /* Color Palette - Blue & White */
+    --primary-blue: #0066CC;
+    --light-blue: #4A90E2;
+    --dark-blue: #003D7A;
+    --very-light-blue: #E8F4FD;
     --white: #FFFFFF;
-    --dark-grey: #1F2833;
+    --light-grey: #F5F7FA;
+    --medium-grey: #E0E6ED;
+    --text-primary: #2C3E50;
+    --text-secondary: #5A6C7D;
+
+    /* Legacy aliases for compatibility */
+    --black: #FFFFFF;
+    --silver: #2C3E50;
+    --cyan: #0066CC;
+    --cyan-dark: #003D7A;
+    --dark-grey: #F5F7FA;
 
     /* Typography */
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -51,10 +61,10 @@ html {
 
 body {
     font-family: var(--font-body);
-    background-color: var(--black);
-    color: var(--silver);
+    background-color: var(--white);
+    color: var(--text-primary);
     line-height: 1.6;
-    font-weight: 300;
+    font-weight: 400;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -107,16 +117,18 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(11, 12, 16, 0.95);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(69, 162, 158, 0.2);
+    border-bottom: 1px solid var(--medium-grey);
     padding: 1.5rem 2rem;
     transition: var(--transition-smooth);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .nav.scrolled {
     padding: 1rem 2rem;
-    background: rgba(11, 12, 16, 0.98);
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
 }
 
 .nav-container {
@@ -130,12 +142,12 @@ body {
 .nav-logo {
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--white);
+    color: var(--dark-blue);
     letter-spacing: 0.05em;
 }
 
 .nav-logo .mono {
-    color: var(--cyan);
+    color: var(--primary-blue);
     margin-right: 0.5rem;
 }
 
@@ -145,16 +157,17 @@ body {
 }
 
 .nav-link {
-    color: var(--silver);
+    color: var(--text-secondary);
     text-decoration: none;
     font-size: 0.85rem;
     letter-spacing: 0.1em;
     position: relative;
     transition: var(--transition-fast);
+    font-weight: 500;
 }
 
 .nav-link:hover {
-    color: var(--cyan);
+    color: var(--primary-blue);
 }
 
 .nav-link::after {
@@ -163,8 +176,8 @@ body {
     bottom: -4px;
     left: 0;
     width: 0;
-    height: 1px;
-    background: var(--cyan);
+    height: 2px;
+    background: var(--primary-blue);
     transition: var(--transition-smooth);
 }
 
@@ -476,8 +489,8 @@ body {
 }
 
 .mechanics-card {
-    background: rgba(31, 40, 51, 0.3);
-    border: 1px solid rgba(69, 162, 158, 0.2);
+    background: var(--very-light-blue);
+    border: 1px solid var(--medium-grey);
     padding: var(--spacing-lg);
     position: relative;
     transition: var(--transition-smooth);
@@ -492,7 +505,7 @@ body {
 .mechanics-card:hover {
     transform: translateY(-8px);
     border-color: var(--cyan);
-    background: rgba(31, 40, 51, 0.5);
+    background: var(--light-grey);
 }
 
 .mechanics-card:hover .card-border {
@@ -687,12 +700,12 @@ body {
     gap: var(--spacing-md);
     padding: var(--spacing-md);
     border-left: 2px solid var(--cyan);
-    background: rgba(31, 40, 51, 0.2);
+    background: rgba(232, 244, 253, 0.4);
     transition: var(--transition-smooth);
 }
 
 .contact-item:hover {
-    background: rgba(31, 40, 51, 0.4);
+    background: rgba(232, 244, 253, 0.6);
     border-left-color: var(--white);
 }
 
@@ -934,8 +947,8 @@ a.contact-value:hover {
 }
 
 .catalog-card {
-    background: rgba(31, 40, 51, 0.3);
-    border: 1px solid rgba(69, 162, 158, 0.2);
+    background: var(--very-light-blue);
+    border: 1px solid var(--medium-grey);
     padding: var(--spacing-lg);
     cursor: pointer;
     transition: var(--transition-smooth);
@@ -945,7 +958,7 @@ a.contact-value:hover {
 .catalog-card:hover {
     transform: translateY(-8px);
     border-color: var(--cyan);
-    background: rgba(31, 40, 51, 0.5);
+    background: var(--light-grey);
     box-shadow: 0 12px 30px rgba(69, 162, 158, 0.2);
 }
 
@@ -1010,7 +1023,7 @@ a.contact-value:hover {
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(11, 12, 16, 0.95);
+    background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(10px);
     animation: fadeIn 0.3s ease;
 }
@@ -1135,8 +1148,8 @@ a.contact-value:hover {
 }
 
 .pricing-option {
-    background: rgba(11, 12, 16, 0.5);
-    border: 1px solid rgba(69, 162, 158, 0.3);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid var(--medium-grey);
     padding: var(--spacing-lg);
     transition: var(--transition-smooth);
 }
@@ -1240,8 +1253,8 @@ a.contact-value:hover {
 .form-textarea {
     width: 100%;
     padding: 0.75rem 1rem;
-    background: rgba(11, 12, 16, 0.5);
-    border: 1px solid rgba(69, 162, 158, 0.3);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid var(--medium-grey);
     color: var(--white);
     font-family: var(--font-body);
     font-size: 1rem;
@@ -1252,7 +1265,7 @@ a.contact-value:hover {
 .form-textarea:focus {
     outline: none;
     border-color: var(--cyan);
-    background: rgba(11, 12, 16, 0.7);
+    background: rgba(245, 247, 250, 0.95);
 }
 
 .form-textarea {
@@ -1288,16 +1301,16 @@ a.contact-value:hover {
 }
 
 .payment-section {
-    background: rgba(31, 40, 51, 0.3);
-    border: 1px solid rgba(69, 162, 158, 0.2);
+    background: var(--very-light-blue);
+    border: 1px solid var(--medium-grey);
     padding: var(--spacing-lg);
     margin-top: var(--spacing-lg);
     border-radius: 4px;
 }
 
 .onboarding-summary {
-    background: rgba(31, 40, 51, 0.3);
-    border: 1px solid rgba(69, 162, 158, 0.2);
+    background: var(--very-light-blue);
+    border: 1px solid var(--medium-grey);
     padding: var(--spacing-lg);
     margin-bottom: var(--spacing-lg);
     border-radius: 4px;
@@ -1338,9 +1351,9 @@ a.contact-value:hover {
    ========================================== */
 
 .section-cta {
-    background: rgba(31, 40, 51, 0.4);
-    border-top: 2px solid rgba(69, 162, 158, 0.3);
-    border-bottom: 2px solid rgba(69, 162, 158, 0.3);
+    background: rgba(232, 244, 253, 0.6);
+    border-top: 2px solid var(--light-blue);
+    border-bottom: 2px solid var(--light-blue);
     padding: var(--spacing-xl) 0;
     margin: var(--spacing-xl) 0;
 }
@@ -1375,8 +1388,8 @@ a.contact-value:hover {
     width: 100%;
     min-height: 120px;
     padding: 1rem;
-    background: rgba(11, 12, 16, 0.6);
-    border: 1px solid rgba(69, 162, 158, 0.3);
+    background: rgba(245, 247, 250, 0.9);
+    border: 1px solid var(--medium-grey);
     color: var(--white);
     font-family: var(--font-body);
     font-size: 1rem;
