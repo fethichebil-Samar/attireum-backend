@@ -375,7 +375,7 @@ body {
    ========================================== */
 
 .signal-section {
-    background: linear-gradient(180deg, var(--black) 0%, #0f1116 100%);
+    background: var(--white);
 }
 
 .split-container {
@@ -396,7 +396,7 @@ body {
 .section-intro {
     font-size: 1.1rem;
     line-height: 1.8;
-    color: var(--silver);
+    color: var(--text-primary);
     margin-bottom: var(--spacing-lg);
     max-width: 600px;
 }
@@ -426,7 +426,7 @@ body {
 .deliverable-item:nth-child(3) { animation-delay: 0.3s; }
 
 .bullet {
-    color: var(--cyan);
+    color: var(--primary-blue);
     font-size: 1.5rem;
     line-height: 1;
     margin-top: 0.2rem;
@@ -435,13 +435,13 @@ body {
 .deliverable-title {
     font-size: 1.3rem;
     font-weight: 600;
-    color: var(--dark-blue);
+    color: var(--primary-blue);
     margin-bottom: 0.5rem;
 }
 
 .deliverable-desc {
     font-size: 1rem;
-    color: var(--silver);
+    color: var(--text-secondary);
     line-height: 1.7;
 }
 
