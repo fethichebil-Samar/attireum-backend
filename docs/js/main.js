@@ -842,63 +842,55 @@
     }
 
     // ==========================================
-    // 20. THEME TRANSITIONS
+    // 20. SLIDE PANELS
     // ==========================================
 
     function initThemeTransitions() {
         const sideTabs = document.querySelectorAll('.side-tab');
-        const themeOverlay = document.getElementById('theme-overlay');
-        const body = document.body;
-        let isTransitioning = false;
+        const strategicPanel = document.getElementById('strategic-panel');
+        const marketPanel = document.getElementById('market-panel');
+        const allPanels = [strategicPanel, marketPanel];
 
+        // Tab click handlers
         sideTabs.forEach(tab => {
             tab.addEventListener('click', function() {
-                if (isTransitioning) return;
+                const panelType = this.getAttribute('data-panel');
 
-                const theme = this.getAttribute('data-theme');
-                const currentActiveTab = document.querySelector('.side-tab.active');
+                // Close all panels first
+                allPanels.forEach(panel => panel.classList.remove('active'));
 
-                // Don't transition if clicking the same theme
-                if (currentActiveTab === this) return;
-
-                isTransitioning = true;
-
-                // IMMEDIATELY update active tab states for slide animation
-                sideTabs.forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-
-                // Set overlay color based on theme
-                if (theme === 'strategic') {
-                    themeOverlay.style.background = '#0066CC';
-                } else if (theme === 'market') {
-                    themeOverlay.style.background = '#E67E22';
+                // Open the clicked panel
+                if (panelType === 'strategic') {
+                    strategicPanel.classList.add('active');
+                    // Update tab states
+                    sideTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                } else if (panelType === 'market') {
+                    marketPanel.classList.add('active');
+                    // Update tab states
+                    sideTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
                 }
-
-                // Small delay to let tab animation start, then trigger overlay
-                setTimeout(() => {
-                    themeOverlay.classList.add('active');
-                }, 50);
-
-                // Wait for overlay to cover screen, then switch theme
-                setTimeout(() => {
-                    // Remove all theme classes
-                    body.classList.remove('theme-strategic', 'theme-market');
-                    // Add new theme class
-                    body.classList.add(`theme-${theme}`);
-
-                    // Fade out overlay
-                    setTimeout(() => {
-                        themeOverlay.classList.remove('active');
-                        setTimeout(() => {
-                            isTransitioning = false;
-                        }, 800);
-                    }, 100);
-                }, 500);
             });
         });
 
-        // Set initial theme
-        body.classList.add('theme-strategic');
+        // Close button handlers
+        const closeButtons = document.querySelectorAll('.panel-close');
+        closeButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                allPanels.forEach(panel => panel.classList.remove('active'));
+                // Reset tab states
+                sideTabs.forEach(t => t.classList.remove('active'));
+            });
+        });
+
+        // Close on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                allPanels.forEach(panel => panel.classList.remove('active'));
+                sideTabs.forEach(t => t.classList.remove('active'));
+            }
+        });
     }
 
     // ==========================================

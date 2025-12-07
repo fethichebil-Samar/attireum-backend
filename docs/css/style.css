@@ -1545,25 +1545,153 @@ a.contact-value-new:hover {
 }
 
 /* ==========================================
-   18. THEME TRANSITION & SIDE TABS
+   18. SLIDE PANELS & SIDE TABS
    ========================================== */
 
-/* Theme Overlay for smooth color transitions */
-.theme-overlay {
+/* Slide Panels */
+.slide-panel {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--primary-blue);
-    opacity: 0;
-    pointer-events: none;
+    width: 50%;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
     z-index: 9999;
-    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: var(--spacing-xl);
+    overflow-y: auto;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
 }
 
-.theme-overlay.active {
-    opacity: 1;
+.slide-panel-left {
+    left: 0;
+    transform: translateX(-100%);
+}
+
+.slide-panel-right {
+    right: 0;
+    background: linear-gradient(135deg, #E67E22 0%, #F39C12 100%);
+    transform: translateX(100%);
+}
+
+.slide-panel.active {
+    transform: translateX(0);
+}
+
+/* Panel Close Button */
+.panel-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    color: white;
+    font-size: 2.5rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    line-height: 1;
+    padding: 0;
+}
+
+.panel-close:hover {
+    background: white;
+    color: var(--primary-blue);
+    transform: rotate(90deg);
+}
+
+.slide-panel-right .panel-close:hover {
+    color: #E67E22;
+}
+
+/* Panel Content */
+.panel-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-top: 4rem;
+    color: white;
+}
+
+.panel-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+    color: white;
+}
+
+.panel-text h3 {
+    font-family: var(--font-mono);
+    font-size: 1.3rem;
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+    color: rgba(255, 255, 255, 0.95);
+    letter-spacing: 0.05em;
+}
+
+.panel-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.panel-text ul {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-md) 0;
+}
+
+.panel-text li {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: var(--spacing-sm);
+    padding-left: 1.5rem;
+    position: relative;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.panel-text li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: white;
+    font-weight: bold;
+}
+
+.panel-text strong {
+    color: white;
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .slide-panel {
+        width: 70%;
+    }
+}
+
+@media (max-width: 768px) {
+    .slide-panel {
+        width: 90%;
+        padding: var(--spacing-md);
+    }
+
+    .panel-content {
+        padding-top: 2rem;
+    }
+
+    .panel-close {
+        top: 1rem;
+        right: 1rem;
+        width: 40px;
+        height: 40px;
+        font-size: 2rem;
+    }
 }
 
 /* Side Navigation Tabs */
@@ -1642,19 +1770,6 @@ a.contact-value-new:hover {
     writing-mode: vertical-rl;
     text-orientation: mixed;
     white-space: nowrap;
-}
-
-/* Theme-specific body classes */
-body.theme-strategic {
-    --primary-blue: #0066CC;
-    --light-blue: #4A90E2;
-    --very-light-blue: #E8F4FD;
-}
-
-body.theme-market {
-    --primary-blue: #E67E22;
-    --light-blue: #F39C12;
-    --very-light-blue: #FFF8F0;
 }
 
 /* Mobile adjustments for side tabs */

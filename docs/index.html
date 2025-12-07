@@ -27,17 +27,60 @@
         </div>
     </nav>
 
-    <!-- Theme Transition Overlay -->
-    <div id="theme-overlay" class="theme-overlay"></div>
-
     <!-- Side Navigation Tabs -->
     <div class="side-nav-tabs">
-        <button class="side-tab side-tab-left active" data-theme="strategic" aria-label="Strategic View">
+        <button class="side-tab side-tab-left" data-panel="strategic" aria-label="Strategic View">
             <span class="side-tab-text">Strategic Analysis</span>
         </button>
-        <button class="side-tab side-tab-right" data-theme="market" aria-label="Market View">
+        <button class="side-tab side-tab-right" data-panel="market" aria-label="Market View">
             <span class="side-tab-text">Market Intelligence</span>
         </button>
+    </div>
+
+    <!-- Strategic Analysis Slide Panel (from left) -->
+    <div id="strategic-panel" class="slide-panel slide-panel-left">
+        <button class="panel-close" aria-label="Close panel">&times;</button>
+        <div class="panel-content">
+            <h2 class="panel-title">Strategic Analysis</h2>
+            <div class="panel-text">
+                <h3>Decision-Maker Lens</h3>
+                <p>We analyze aviation infrastructure through the lens of strategic positioning. Every data point is evaluated for its impact on competitive advantage, regulatory positioning, and long-term asset value.</p>
+
+                <h3>What You Get</h3>
+                <ul>
+                    <li><strong>Competitive Intelligence:</strong> Track competitor movements, bid strategies, and partnership formations before they become public knowledge.</li>
+                    <li><strong>Regulatory Signals:</strong> Decode policy shifts and regulatory patterns that create windows of opportunity or risk.</li>
+                    <li><strong>Deal Flow Analysis:</strong> Understand which transactions are moving, who's involved, and what terms are shaping the market.</li>
+                    <li><strong>Strategic Positioning:</strong> Identify market gaps, emerging niches, and underpriced assets before the broader market catches on.</li>
+                </ul>
+
+                <h3>Who This Serves</h3>
+                <p>CEOs, investors, and asset owners who need to make high-stakes decisions with incomplete information. You don't need more data—you need the right signals at the right time.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Market Intelligence Slide Panel (from right) -->
+    <div id="market-panel" class="slide-panel slide-panel-right">
+        <button class="panel-close" aria-label="Close panel">&times;</button>
+        <div class="panel-content">
+            <h2 class="panel-title">Market Intelligence</h2>
+            <div class="panel-text">
+                <h3>Market-Wide Perspective</h3>
+                <p>We monitor the entire aviation infrastructure ecosystem—from airport privatizations to AAM developments. Real-time tracking of deals, valuations, and market shifts that impact your sector positioning.</p>
+
+                <h3>What You Get</h3>
+                <ul>
+                    <li><strong>Deal Tracking:</strong> Live monitoring of global airport privatization tenders, concession renewals, and AAM infrastructure buildouts.</li>
+                    <li><strong>Valuation Benchmarks:</strong> Understand what assets are trading for, which multiples are prevailing, and where pricing disconnects exist.</li>
+                    <li><strong>Market Trends:</strong> Identify emerging patterns in investor appetite, financing structures, and operational models.</li>
+                    <li><strong>Geographic Shifts:</strong> Track capital flows and regulatory changes across MENA, Americas, Europe, and Asia-Pacific markets.</li>
+                </ul>
+
+                <h3>Who This Serves</h3>
+                <p>Investors and operators who need real-time market context for portfolio decisions, pricing strategies, and capital allocation. Stay ahead of market movements before they reshape valuations.</p>
+            </div>
+        </div>
     </div>
 
     <!-- Section 1: Dashboard (Hero) -->
