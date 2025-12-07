@@ -681,69 +681,138 @@ body {
 }
 
 /* ==========================================
-   10. ACCESS SECTION
+   10. ACCESS SECTION (Split Screen Contact)
    ========================================== */
 
 .access-section {
-    background: var(--black);
-    min-height: 90vh;
+    background: var(--white);
+    min-height: 100vh;
+    padding: 0;
 }
 
-.access-content {
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: center;
+.access-split-layout {
+    display: grid;
+    grid-template-columns: 45% 55%;
+    min-height: 100vh;
 }
 
-.access-intro {
-    font-size: 1.2rem;
-    color: #1a1a1a;
+/* Left Visual */
+.access-visual {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.access-visual-content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.visual-pattern {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    border: 3px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+}
+
+/* Right Content */
+.access-content-right {
+    padding: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--white);
+}
+
+.access-main-heading {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+}
+
+.access-sub-heading {
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    color: var(--light-blue);
+    font-weight: 500;
     margin-bottom: var(--spacing-xl);
+    line-height: 1.4;
 }
 
-.contact-block {
+.contact-grid {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
     margin-bottom: var(--spacing-xl);
-    text-align: left;
 }
 
-.contact-item {
-    display: flex;
-    gap: var(--spacing-md);
-    padding: var(--spacing-md);
-    border-left: 2px solid var(--cyan);
-    background: rgba(232, 244, 253, 0.4);
-    transition: var(--transition-smooth);
+.contact-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: var(--spacing-sm);
+    align-items: baseline;
 }
 
-.contact-item:hover {
-    background: rgba(232, 244, 253, 0.6);
-    border-left-color: var(--white);
-}
-
-.contact-label {
-    min-width: 120px;
-    color: var(--dark-blue);
+.contact-label-new {
+    font-family: var(--font-mono);
     font-size: 0.85rem;
-    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    letter-spacing: 0.05em;
     font-weight: 600;
 }
 
-.contact-value {
-    color: var(--dark-blue);
-    font-size: 1rem;
+.contact-value-new {
+    font-size: 1.1rem;
+    color: var(--text-primary);
     text-decoration: none;
-    transition: var(--transition-fast);
+    transition: color 0.3s ease;
 }
 
-a.contact-value:hover {
-    color: var(--cyan);
+a.contact-value-new:hover {
+    color: var(--primary-blue);
 }
 
-.final-cta {
-    margin-top: var(--spacing-xl);
+.final-cta-new {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .access-split-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .access-visual {
+        min-height: 40vh;
+    }
+
+    .access-content-right {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .contact-row {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+    }
 }
 
 
