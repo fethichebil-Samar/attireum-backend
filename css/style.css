@@ -202,7 +202,7 @@ body {
 .hero-title {
     font-size: clamp(3rem, 8vw, 6.5rem);
     line-height: 1.1;
-    color: var(--white);
+    color: var(--dark-blue);
     margin-bottom: var(--spacing-md);
     animation: fadeInUp 0.8s ease;
 }
@@ -267,25 +267,27 @@ body {
 }
 
 .btn-primary {
-    background: var(--cyan);
-    color: var(--black);
+    background: var(--primary-blue);
+    color: #FFFFFF;
+    border-color: var(--primary-blue);
 }
 
 .btn-primary:hover {
-    background: var(--cyan-dark);
-    border-color: var(--cyan-dark);
+    background: var(--dark-blue);
+    border-color: var(--dark-blue);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(69, 162, 158, 0.3);
+    box-shadow: 0 8px 20px rgba(0, 102, 204, 0.3);
 }
 
 .btn-secondary {
     background: transparent;
-    color: var(--cyan);
+    color: var(--primary-blue);
+    border-color: var(--primary-blue);
 }
 
 .btn-secondary:hover {
-    background: var(--cyan);
-    color: var(--black);
+    background: var(--primary-blue);
+    color: #FFFFFF;
     transform: translateY(-2px);
 }
 
@@ -375,7 +377,7 @@ body {
 .section-title {
     font-size: clamp(2.5rem, 5vw, 4rem);
     line-height: 1.2;
-    color: var(--white);
+    color: var(--dark-blue);
     margin-bottom: var(--spacing-md);
 }
 
@@ -421,7 +423,7 @@ body {
 .deliverable-title {
     font-size: 1.3rem;
     font-weight: 600;
-    color: var(--white);
+    color: var(--dark-blue);
     margin-bottom: 0.5rem;
 }
 
@@ -523,7 +525,7 @@ body {
 .card-title {
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--white);
+    color: var(--dark-blue);
     margin-bottom: var(--spacing-sm);
 }
 
@@ -613,7 +615,7 @@ body {
 .forecast-title {
     font-size: 1.4rem;
     font-weight: 600;
-    color: var(--white);
+    color: var(--dark-blue);
     margin-bottom: 0.5rem;
 }
 
@@ -717,7 +719,7 @@ body {
 }
 
 .contact-value {
-    color: var(--white);
+    color: var(--dark-blue);
     font-size: 1rem;
     text-decoration: none;
     transition: var(--transition-fast);
@@ -975,7 +977,7 @@ a.contact-value:hover {
 .catalog-card-title {
     font-size: 1.3rem;
     font-weight: 600;
-    color: var(--white);
+    color: var(--dark-blue);
     margin-bottom: var(--spacing-sm);
     line-height: 1.4;
 }
@@ -1070,7 +1072,7 @@ a.contact-value:hover {
 }
 
 .modal-close:hover {
-    color: var(--white);
+    color: var(--dark-blue);
     transform: rotate(90deg);
 }
 
@@ -1090,7 +1092,7 @@ a.contact-value:hover {
 
 .modal-title {
     font-size: 2.5rem;
-    color: var(--white);
+    color: var(--dark-blue);
     margin-bottom: var(--spacing-sm);
     line-height: 1.2;
 }
@@ -1116,7 +1118,7 @@ a.contact-value:hover {
 .modal-subtitle {
     font-size: 1.3rem;
     font-weight: 600;
-    color: var(--white);
+    color: var(--dark-blue);
     margin-bottom: var(--spacing-sm);
 }
 
@@ -1178,7 +1180,7 @@ a.contact-value:hover {
 .pricing-title {
     font-size: 1.2rem;
     font-weight: 600;
-    color: var(--white);
+    color: var(--dark-blue);
 }
 
 .pricing-desc {
@@ -1226,7 +1228,7 @@ a.contact-value:hover {
 .form-title {
     font-size: 1.8rem;
     font-weight: 600;
-    color: var(--white);
+    color: var(--dark-blue);
     margin-bottom: var(--spacing-sm);
 }
 
@@ -1255,7 +1257,7 @@ a.contact-value:hover {
     padding: 0.75rem 1rem;
     background: rgba(255, 255, 255, 0.95);
     border: 1px solid var(--medium-grey);
-    color: var(--white);
+    color: var(--dark-blue);
     font-family: var(--font-body);
     font-size: 1rem;
     transition: var(--transition-smooth);
@@ -1275,7 +1277,7 @@ a.contact-value:hover {
 
 .form-input::placeholder,
 .form-textarea::placeholder {
-    color: rgba(197, 198, 199, 0.4);
+    color: rgba(90, 108, 125, 0.5);
 }
 
 .form-actions {
@@ -1337,7 +1339,7 @@ a.contact-value:hover {
 
 .summary-value {
     font-size: 1rem;
-    color: var(--white);
+    color: var(--dark-blue);
 }
 
 #calendly-container iframe {
@@ -1390,7 +1392,7 @@ a.contact-value:hover {
     padding: 1rem;
     background: rgba(245, 247, 250, 0.9);
     border: 1px solid var(--medium-grey);
-    color: var(--white);
+    color: var(--dark-blue);
     font-family: var(--font-body);
     font-size: 1rem;
     line-height: 1.6;
@@ -1406,18 +1408,18 @@ a.contact-value:hover {
 }
 
 .cta-textarea::placeholder {
-    color: rgba(197, 198, 199, 0.4);
+    color: rgba(90, 108, 125, 0.5);
 }
 
 .cta-button {
     display: inline-block;
     padding: 1rem 2.5rem;
-    background: var(--cyan);
-    color: var(--black);
+    background: var(--primary-blue);
+    color: #FFFFFF;
     font-family: var(--font-mono);
     font-weight: 600;
     text-decoration: none;
-    border: none;
+    border: 2px solid var(--primary-blue);
     cursor: pointer;
     transition: var(--transition-smooth);
     font-size: 1rem;
@@ -1425,9 +1427,10 @@ a.contact-value:hover {
 }
 
 .cta-button:hover {
-    background: var(--white);
+    background: var(--dark-blue);
+    border-color: var(--dark-blue);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(69, 162, 158, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
 }
 
 .cta-note {
