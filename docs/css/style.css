@@ -202,7 +202,8 @@ body {
 .hero-title {
     font-size: clamp(3rem, 8vw, 6.5rem);
     line-height: 1.1;
-    color: var(--dark-blue);
+    color: #1a1a1a;
+    font-weight: 700;
     margin-bottom: var(--spacing-md);
     animation: fadeInUp 0.8s ease;
 }
@@ -212,7 +213,8 @@ body {
     flex-wrap: wrap;
     gap: var(--spacing-sm);
     font-size: 0.85rem;
-    color: var(--cyan);
+    color: var(--primary-blue);
+    font-weight: 500;
     margin-bottom: var(--spacing-lg);
     animation: fadeInUp 0.8s ease 0.2s both;
 }
@@ -377,7 +379,8 @@ body {
 .section-title {
     font-size: clamp(2.5rem, 5vw, 4rem);
     line-height: 1.2;
-    color: var(--dark-blue);
+    color: #1a1a1a;
+    font-weight: 700;
     margin-bottom: var(--spacing-md);
 }
 
