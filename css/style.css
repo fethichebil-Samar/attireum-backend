@@ -1580,7 +1580,6 @@ a.contact-value-new:hover {
 .side-tab {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
     width: 60px;
     height: 200px;
     border: none;
@@ -1603,6 +1602,7 @@ a.contact-value-new:hover {
     background: var(--primary-blue);
     color: white;
     border-radius: 0 30px 30px 0;
+    transform: translateY(-50%) translateX(-20px);
 }
 
 .side-tab-right {
@@ -1610,6 +1610,7 @@ a.contact-value-new:hover {
     background: #E67E22;
     color: white;
     border-radius: 30px 0 0 30px;
+    transform: translateY(-50%) translateX(20px);
 }
 
 .side-tab:hover {
@@ -1617,8 +1618,24 @@ a.contact-value-new:hover {
     box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
 }
 
+.side-tab-left:hover {
+    transform: translateY(-50%) translateX(-10px);
+}
+
+.side-tab-right:hover {
+    transform: translateY(-50%) translateX(10px);
+}
+
 .side-tab.active {
     width: 80px;
+}
+
+.side-tab-left.active {
+    transform: translateY(-50%) translateX(0);
+}
+
+.side-tab-right.active {
+    transform: translateY(-50%) translateX(0);
 }
 
 .side-tab-text {
