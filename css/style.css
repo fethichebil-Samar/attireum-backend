@@ -32,6 +32,15 @@
     --cyan-dark: #003D7A;
     --dark-grey: #F5F7FA;
 
+    /* Theme Transition Colors */
+    --theme-strategic-bg: #FFFFFF;
+    --theme-strategic-primary: #0066CC;
+    --theme-strategic-accent: #4A90E2;
+
+    --theme-market-bg: #FFF8F0;
+    --theme-market-primary: #E67E22;
+    --theme-market-accent: #F39C12;
+
     /* Typography */
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-mono: 'Space Mono', 'Courier New', monospace;
@@ -1467,7 +1476,120 @@ a.contact-value:hover {
 }
 
 /* ==========================================
-   18. PRINT STYLES
+   18. THEME TRANSITION & SIDE TABS
+   ========================================== */
+
+/* Theme Overlay for smooth color transitions */
+.theme-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-blue);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-overlay.active {
+    opacity: 1;
+}
+
+/* Side Navigation Tabs */
+.side-nav-tabs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.side-tab {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 200px;
+    border: none;
+    cursor: pointer;
+    pointer-events: all;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.side-tab-left {
+    left: 0;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 0 30px 30px 0;
+}
+
+.side-tab-right {
+    right: 0;
+    background: #E67E22;
+    color: white;
+    border-radius: 30px 0 0 30px;
+}
+
+.side-tab:hover {
+    width: 70px;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+}
+
+.side-tab.active {
+    width: 80px;
+}
+
+.side-tab-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    white-space: nowrap;
+}
+
+/* Theme-specific body classes */
+body.theme-strategic {
+    --primary-blue: #0066CC;
+    --light-blue: #4A90E2;
+    --very-light-blue: #E8F4FD;
+}
+
+body.theme-market {
+    --primary-blue: #E67E22;
+    --light-blue: #F39C12;
+    --very-light-blue: #FFF8F0;
+}
+
+/* Mobile adjustments for side tabs */
+@media (max-width: 768px) {
+    .side-tab {
+        width: 40px;
+        height: 150px;
+        font-size: 0.65rem;
+    }
+
+    .side-tab:hover {
+        width: 45px;
+    }
+
+    .side-tab.active {
+        width: 50px;
+    }
+}
+
+/* ==========================================
+   19. PRINT STYLES
    ========================================== */
 
 @media print {

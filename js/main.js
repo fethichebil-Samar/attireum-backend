@@ -18,6 +18,7 @@
         initSmoothScroll();
         initTickerAnimation();
         initCursorEffects();
+        initThemeTransitions();
     });
 
     // ==========================================
@@ -841,7 +842,65 @@
     }
 
     // ==========================================
-    // 20. INITIALIZE CATALOG
+    // 20. THEME TRANSITIONS
+    // ==========================================
+
+    function initThemeTransitions() {
+        const sideTabs = document.querySelectorAll('.side-tab');
+        const themeOverlay = document.getElementById('theme-overlay');
+        const body = document.body;
+        let isTransitioning = false;
+
+        sideTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                if (isTransitioning) return;
+
+                const theme = this.getAttribute('data-theme');
+                const currentActiveTab = document.querySelector('.side-tab.active');
+
+                // Don't transition if clicking the same theme
+                if (currentActiveTab === this) return;
+
+                isTransitioning = true;
+
+                // Set overlay color based on theme
+                if (theme === 'strategic') {
+                    themeOverlay.style.background = '#0066CC';
+                } else if (theme === 'market') {
+                    themeOverlay.style.background = '#E67E22';
+                }
+
+                // Trigger overlay fade in
+                themeOverlay.classList.add('active');
+
+                // Wait for overlay to cover screen, then switch theme
+                setTimeout(() => {
+                    // Remove all theme classes
+                    body.classList.remove('theme-strategic', 'theme-market');
+                    // Add new theme class
+                    body.classList.add(`theme-${theme}`);
+
+                    // Update active tab
+                    sideTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Fade out overlay
+                    setTimeout(() => {
+                        themeOverlay.classList.remove('active');
+                        setTimeout(() => {
+                            isTransitioning = false;
+                        }, 800);
+                    }, 100);
+                }, 400);
+            });
+        });
+
+        // Set initial theme
+        body.classList.add('theme-strategic');
+    }
+
+    // ==========================================
+    // 21. INITIALIZE CATALOG
     // ==========================================
 
     initCatalogModal();
