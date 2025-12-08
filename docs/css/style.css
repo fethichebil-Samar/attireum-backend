@@ -578,7 +578,7 @@ body {
    ========================================== */
 
 .forecast-section {
-    background: linear-gradient(180deg, #0f1116 0%, var(--black) 100%);
+    background: var(--white);
 }
 
 .forecast-content {
@@ -593,8 +593,8 @@ body {
 
 .horizon-line {
     width: 200px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
     margin: var(--spacing-md) auto;
 }
 
@@ -619,7 +619,7 @@ body {
 .forecast-item:nth-child(3) { animation-delay: 0.3s; }
 
 .forecast-icon {
-    color: var(--cyan);
+    color: var(--primary-blue);
     font-size: 1.5rem;
     line-height: 1;
 }
@@ -627,13 +627,13 @@ body {
 .forecast-title {
     font-size: 1.4rem;
     font-weight: 600;
-    color: var(--dark-blue);
+    color: var(--primary-blue);
     margin-bottom: 0.5rem;
 }
 
 .forecast-desc {
     font-size: 1rem;
-    color: var(--silver);
+    color: var(--text-secondary);
     line-height: 1.7;
 }
 
@@ -646,7 +646,7 @@ body {
 .timeline-line {
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, var(--cyan), var(--cyan-dark));
+    background: linear-gradient(90deg, var(--light-blue), var(--primary-blue));
     position: relative;
 }
 
