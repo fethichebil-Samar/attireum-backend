@@ -2460,6 +2460,20 @@ a.contact-value-new:hover {
     align-self: flex-start;
 }
 
+.test-disclaimer {
+    margin-top: var(--spacing-md);
+    padding: 0.75rem 1rem;
+    background: #FF6B35;
+    color: white;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-align: center;
+    font-family: var(--font-mono);
+    letter-spacing: 0.05em;
+    border: 2px solid #E85A2B;
+}
+
 .testimonials-cta {
     background: var(--very-light-blue);
     padding: var(--spacing-xxl) 0;
