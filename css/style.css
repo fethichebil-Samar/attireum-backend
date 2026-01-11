@@ -2016,7 +2016,334 @@ a.contact-value-new:hover {
 }
 
 /* ==========================================
-   20. PRINT STYLES
+   20. SERVICES PAGE
+   ========================================== */
+
+.services-hero {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+    padding: calc(var(--spacing-xxl) + 80px) 0 var(--spacing-xl) 0;
+    text-align: center;
+    color: white;
+}
+
+.services-hero-title {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+}
+
+.services-hero-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-weight: 400;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.services-section {
+    background: var(--white);
+    padding: var(--spacing-xxl) 0;
+}
+
+.services-content {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Service Tiers */
+.service-tier {
+    margin-bottom: var(--spacing-xxl);
+    padding-bottom: var(--spacing-xxl);
+    border-bottom: 2px solid var(--medium-grey);
+}
+
+.service-tier:last-child {
+    border-bottom: none;
+}
+
+.tier-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.tier-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--light-blue);
+    line-height: 1;
+}
+
+.tier-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--primary-blue);
+    flex: 1;
+    min-width: 250px;
+}
+
+.tier-price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+}
+
+.tier-content {
+    padding-left: calc(3rem + var(--spacing-md));
+}
+
+.tier-intro {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Consultation Streams */
+.consultation-streams {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+}
+
+.stream-card {
+    background: var(--very-light-blue);
+    padding: var(--spacing-lg);
+    border-radius: 8px;
+    border-top: 4px solid var(--primary-blue);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stream-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 102, 204, 0.15);
+}
+
+.stream-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.stream-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.stream-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+}
+
+.stream-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    margin-bottom: var(--spacing-sm);
+}
+
+.stream-desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.stream-deliverables {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-md) 0;
+}
+
+.stream-deliverables li {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.stream-deliverables li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary-blue);
+    font-weight: bold;
+}
+
+.stream-cta {
+    display: inline-block;
+    margin-top: var(--spacing-md);
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-blue);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.stream-cta:hover {
+    background: var(--dark-blue);
+}
+
+/* Process Steps */
+.tier-process {
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: var(--light-grey);
+    border-radius: 8px;
+}
+
+.process-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: var(--spacing-md);
+}
+
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.process-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.process-step p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Newsletter & Details */
+.newsletter-details,
+.dossier-details,
+.deep-involvement-details {
+    margin: var(--spacing-lg) 0;
+}
+
+.detail-block {
+    margin-bottom: var(--spacing-lg);
+}
+
+.detail-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: var(--spacing-sm);
+}
+
+.detail-list {
+    list-style: none;
+    padding: 0;
+}
+
+.detail-list li {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    position: relative;
+}
+
+.detail-list li::before {
+    content: "■";
+    position: absolute;
+    left: 0;
+    color: var(--primary-blue);
+}
+
+.detail-list strong {
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.detail-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.inline-link {
+    color: var(--primary-blue);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.inline-link:hover {
+    color: var(--dark-blue);
+}
+
+.tier-cta-block {
+    margin-top: var(--spacing-lg);
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tier-content {
+        padding-left: 0;
+    }
+
+    .tier-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .consultation-streams {
+        grid-template-columns: 1fr;
+    }
+
+    .process-steps {
+        grid-template-columns: 1fr;
+    }
+
+    .tier-cta-block {
+        flex-direction: column;
+    }
+}
+
+/* ==========================================
+   21. PRINT STYLES
    ========================================== */
 
 @media print {
