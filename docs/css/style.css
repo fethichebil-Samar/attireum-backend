@@ -1743,6 +1743,7 @@ a.contact-value-new:hover {
     pointer-events: all;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     font-family: var(--font-mono);
@@ -1779,6 +1780,7 @@ a.contact-value-new:hover {
     transform: translateY(20px);
     width: 200px;
     height: 60px;
+    flex-direction: row;
 }
 
 .side-tab:hover {
@@ -1824,6 +1826,55 @@ a.contact-value-new:hover {
     writing-mode: vertical-rl;
     text-orientation: mixed;
     white-space: nowrap;
+}
+
+.side-tab-icon {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+    display: inline-block;
+    transition: transform 0.3s ease;
+    opacity: 0.9;
+}
+
+.side-tab-left .side-tab-icon {
+    margin-bottom: 1rem;
+}
+
+.side-tab-right .side-tab-icon {
+    margin-top: 1rem;
+}
+
+.side-tab-bottom .side-tab-icon {
+    margin-right: 0.75rem;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.side-tab:hover .side-tab-icon {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+.side-tab-left:hover .side-tab-icon {
+    animation: pulse-icon 1.5s ease-in-out infinite;
+}
+
+.side-tab-right:hover .side-tab-icon {
+    animation: pulse-icon 1.5s ease-in-out infinite;
+}
+
+.side-tab-bottom:hover .side-tab-icon {
+    animation: pulse-icon 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-icon {
+    0%, 100% {
+        transform: scale(1.2);
+    }
+    50% {
+        transform: scale(1.4);
+    }
 }
 
 /* Mobile adjustments for side tabs */
